@@ -118,7 +118,7 @@ public class DialogDecorator implements DisplayedDialog {
     }
 
     /**
-     * @param alpha dialog的透明度，0-1，越大透明度就越高，1为完全不透明，0为全透明
+     * @param alpha dialog的透明度（整体透明度，并不只是背景的），0-1，越大透明度就越高，1为完全不透明，0为全透明
      * @param dimAmount dialog外的调暗程度，0-1，越大就越暗，1为全黑，0为完全不暗
      * 因他们设置后几乎不会改变，因此使用直设式
      */

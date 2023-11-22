@@ -100,6 +100,26 @@ class MainActivity : AppCompatActivity() {
                 val dialogDecorator = DialogDecorator(commonDialog)
                 dialogDecorator.setCancelable(DialogDecorator.DismissResponse.RESPONSE_4)
                 dialogDecorator.display()
+            },GuideItemEntity("外部完全不暗") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                dialogDecorator.setAlphaAndDimAmount(1F, 0F);
+                dialogDecorator.display()
+            },GuideItemEntity("外部全暗") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                dialogDecorator.setAlphaAndDimAmount(1F, 1F);
+                dialogDecorator.display()
+            },GuideItemEntity("外部比正常稍亮") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                dialogDecorator.setAlphaAndDimAmount(1F, 0.2F);
+                dialogDecorator.display()
+            },GuideItemEntity("内部很透明") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                dialogDecorator.setAlphaAndDimAmount(0.3F, 0F);
+                dialogDecorator.display()
             },
         ))
 

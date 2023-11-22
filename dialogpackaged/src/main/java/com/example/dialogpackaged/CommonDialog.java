@@ -14,6 +14,8 @@ import java.util.Objects;
 public class CommonDialog extends Dialog implements DisplayedDialog{
     protected final View mContentView;
     protected boolean cancelBackEvent = false;
+
+    //contentViewId为必传的参数，用于给Dialog设置内容
     public CommonDialog(@NonNull Context context, int contentViewId) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -29,7 +31,7 @@ public class CommonDialog extends Dialog implements DisplayedDialog{
     public void display() {
         customProperty();
         show();
-}
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
@@ -45,6 +47,6 @@ public class CommonDialog extends Dialog implements DisplayedDialog{
         return mContentView.findViewById(id);
     }
 
-    //给子类进行实现的
+    //给子类进行自定义实现
     protected void customProperty() {}
 }
