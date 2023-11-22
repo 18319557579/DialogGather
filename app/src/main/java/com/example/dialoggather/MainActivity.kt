@@ -1,5 +1,6 @@
 package com.example.dialoggather
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -119,6 +120,29 @@ class MainActivity : AppCompatActivity() {
                 val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
                 val dialogDecorator = DialogDecorator(commonDialog)
                 dialogDecorator.setAlphaAndDimAmount(0.3F, 0F);
+                dialogDecorator.display()
+
+            },GuideItemEntity("修改GradientDrawable背景:圆角半径") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                //这里走的是GradientDrawable条件
+                dialogDecorator.setBackgroundCornerRadius(50)
+                dialogDecorator.display()
+
+                //todo 调用这里后，背景的颜色将会被修改；此时再调用上面的，由于上面不会去设置颜色，因此颜色将被修改
+            },GuideItemEntity("修改GradientDrawable背景:圆角半径+背景（半透明背景）") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                //这里走的是GradientDrawable条件
+                dialogDecorator.setBackgroundCornerRadius(35, Color.parseColor("#80C55050"))
+                dialogDecorator.display()
+            },
+
+            GuideItemEntity("修改GradientDrawable背景:分别设置每个圆角半径") {
+                val commonDialog = CommonDialog(this, R.layout.layout_gamestick_selector)
+                val dialogDecorator = DialogDecorator(commonDialog)
+                //这里走的是GradientDrawable条件
+                dialogDecorator.setBackgroundCornerRadius2(intArrayOf(10, 20, 30, 40))
                 dialogDecorator.display()
             },
         ))
