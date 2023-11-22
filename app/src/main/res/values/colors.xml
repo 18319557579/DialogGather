@@ -8,5 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="new_button_bg_color">#565FFC</color>
+    <color name="color_gamestick_purple_highlight">#565FFC</color>
 </resources>

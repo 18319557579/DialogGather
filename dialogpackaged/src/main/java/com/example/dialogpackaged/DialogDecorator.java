@@ -22,9 +22,9 @@ public class DialogDecorator implements DisplayedDialog {
     //Dialog返回事件的响应方式
     public enum DismissResponse {
         RESPONSE_1,  //点击外部关闭，点击返回键关闭
-        RESPONSE_2,  //点击外部关闭，点击返回键关闭
-        RESPONSE_3,  //点击外部关闭，点击返回键关闭
-        RESPONSE_4;  //点击外部关闭，点击返回键关闭
+        RESPONSE_2,  //点击外部无反应，点击返回键关闭
+        RESPONSE_3,  //点击外部关闭，点击返回键无反应
+        RESPONSE_4;  //点击外部无反应，点击返回键无反应
     }
 
     //目前只设定垂直方向的位置，因为基本都是水平居中的
@@ -42,9 +42,11 @@ public class DialogDecorator implements DisplayedDialog {
     private Window mDialogWindow;  //Dialog所在的window
     private Context mDialogContext;  //从Dialog中获得的context
 
+    //这里的偏离是相对于某Gravity而言的，例如为TOP，那么就是以屏幕顶部为基准开始向下偏离；BOTTOM就是以屏幕底部为基准开始向上偏离
+    //CENTER就是以屏幕中间为基准开始向下偏离
     private boolean mVerticalBiasTypeRatio = true;  //在垂直方向上偏移类型，比例/长度，默认比例
     private float mVerticalBiasRatio = 0;  //垂直偏移比例
-    private int mVerticalBiasLength = 0;  //垂直偏移量
+    private int mVerticalBiasLength = 0;  //垂直偏移量（单位为dp，后面会转换为px）
 
     private boolean mWidthTypeRatio = true;  //宽度的类型，水平占比/水平方向留白，默认水平占比
     private float mWidthRatio = 4 / 5F;  //水平占比
@@ -109,7 +111,7 @@ public class DialogDecorator implements DisplayedDialog {
                 mDialog.cancelBackEvent = true;
                 break;
             case RESPONSE_4:
-                //setCancelable()设置是否可以被关闭，如果为false那么点击dialog外，或者按返回键都无法关闭
+                //setCancelable()设置是否可以被关闭，如果为false那么点击dialog外，或者按返回键都无法关闭。但是调用dismiss还是可以关闭的
                 mDialog.setCancelable(false);
                 break;
         }
