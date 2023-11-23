@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialogpackaged_bg_slots_feedback"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dialogpackaged_slots_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/dialogpackaged_slots_iv_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@drawable/dialogpackaged_img_slots_cross"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/dialogpackaged_slots_tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="5dp">
+        <EditText
+            android:id="@+id/dialogpackaged_slots_edt_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#939393"
+            android:textFontWeight="500"
+            android:textSize="14sp"
+            android:background="@drawable/dialogpackaged_bg_slots_edittext"
+            android:gravity="left"
+            android:padding="10dp"
+            android:textCursorDrawable="@null"
+            android:maxLength="100"/>
+
+        <!--这里还是用来dialogpackaged_bg_slots_edittext背景，是为了如果编辑框中的内容多到了这些数字下，那这些数字也能都浮在上面，不至于混在一起-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/dialogpackaged_bg_slots_edittext"
+            android:paddingLeft="5dp">
+            <TextView
+                android:id="@+id/dialogpackaged_slots_tv_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#939393"
+                android:text="0"/>
+
+            <TextView
+                android:id="@+id/dialogpackaged_slots_tv_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/100"
+                android:textColor="#939393"/>
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/dialogpackaged_slots_btn_commit"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@drawable/dialogpackaged_bg_slots_comfirm_button"
+            android:textColor="#FFFFFF"
+            android:textFontWeight="700"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Submit"
+            android:layout_centerInParent="true"
+            android:textAllCaps="false"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

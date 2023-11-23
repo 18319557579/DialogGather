@@ -11,8 +11,11 @@ import com.example.dialogpackaged.dialog.CommonDialog
 import com.example.dialogpackaged.decorator.DialogDecorator
 import com.example.dialogpackaged.dialog.GamestickNormalDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog.EventCallback
+import com.example.dialogpackaged.dialog.SlotsFeedbackDialog
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
+import com.example.utilsgather.logcat.LogUtil
+import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mainBinding.root)
+        ScreenFunctionUtils.hideActionBar(this)
 
         GuideSettings.set(
             mainBinding.lvShowDialog, arrayOf(
@@ -402,6 +406,31 @@ class MainActivity : AppCompatActivity() {
                     })
                     val dialogDecorator = DialogDecorator(gamestickNormalDialog)
                     dialogDecorator.display()
+                },
+
+                GuideItemEntity("Slots反馈弹窗，横屏时弹出") {
+                    val slotsFeedbackDialog = SlotsFeedbackDialog(this).apply {
+                        setTvTitleText("FEEDBACK")
+                        setTvContentText("Thank you for your comments! We will definitely handle your feedback seriously!")
+                        setEventCallback(object : SlotsFeedbackDialog.EventCallback {
+                            override fun onClose() {
+                                LogUtil.d("执行关闭的埋点上报")
+                            }
+
+                            override fun onCommit(input: String?) {
+                                LogUtil.d("执行提交的买点上报：$input")
+                            }
+                        })
+                    }
+                    //由于是横屏的弹窗效果，因此要配合DialogDecorator进行使用
+                    DialogDecorator(slotsFeedbackDialog).apply {
+                        setRatioOrSpare(0.5F)
+                        setVerticalGravityAndBias(DialogDecorator.VerticalPosition.CENTER, 0)
+                        setCancelable(DialogDecorator.DismissResponse.RESPONSE_4)
+                        display()
+                    }
+
+
                 },
             )
         )

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 
 import com.example.dialogpackaged.DisplayedDialog;
@@ -18,7 +19,7 @@ public class CommonDialog extends Dialog implements DisplayedDialog {
     public boolean cancelBackEvent = false;
 
     //contentViewId为必传的参数，用于给Dialog设置内容
-    public CommonDialog(@NonNull Context context, int contentViewId) {
+    public CommonDialog(@NonNull Context context, @LayoutRes int contentViewId) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 

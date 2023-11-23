@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialogpackaged_background_gamestick_selector">
+    android:background="@drawable/dialogpackaged_background_gamestick_normal">
 
     <!--加滚动，防止小手机无法展示所有内容-->
     <ScrollView
