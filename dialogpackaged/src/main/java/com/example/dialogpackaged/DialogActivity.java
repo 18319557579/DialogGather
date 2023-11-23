@@ -1,9 +1,11 @@
 package com.example.dialogpackaged;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dialogpackaged.decorator.DialogDecorator;
+import com.example.dialogpackaged.dialog.CommonDialog;
 
 public class DialogActivity extends AppCompatActivity {
 

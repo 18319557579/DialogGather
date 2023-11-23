@@ -1,16 +1,17 @@
-package com.example.dialogpackaged;
+package com.example.dialogpackaged.decorator;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.util.Size;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.dialogpackaged.DisplayedDialog;
+import com.example.dialogpackaged.dialog.CommonDialog;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 

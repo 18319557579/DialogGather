@@ -1,4 +1,4 @@
-package com.example.dialogpackaged;
+package com.example.dialogpackaged.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,11 +9,13 @@ import android.view.Window;
 
 import androidx.annotation.NonNull;
 
+import com.example.dialogpackaged.DisplayedDialog;
+
 import java.util.Objects;
 
-public class CommonDialog extends Dialog implements DisplayedDialog{
-    protected final View mContentView;
-    protected boolean cancelBackEvent = false;
+public class CommonDialog extends Dialog implements DisplayedDialog {
+    public final View mContentView;
+    public boolean cancelBackEvent = false;
 
     //contentViewId为必传的参数，用于给Dialog设置内容
     public CommonDialog(@NonNull Context context, int contentViewId) {
