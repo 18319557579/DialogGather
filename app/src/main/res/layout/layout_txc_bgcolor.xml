@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="#FF7F00">
 
     <TextView
         android:id="@+id/tv_hint"
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="弃我去者，昨日之日不可留；乱我心者，今日之日多烦忧。长风万里送秋雁？"/>
+            android:text="这是带颜色背景的"/>
 
         <TextView
             android:id="@+id/txt_confirm"
