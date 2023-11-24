@@ -7,11 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dialoggather.databinding.ActivityMainBinding
-import com.example.dialogpackaged.dialog.CommonDialog
 import com.example.dialogpackaged.decorator.DialogDecorator
+import com.example.dialogpackaged.dialog.CommonDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog.EventCallback
 import com.example.dialogpackaged.dialog.SlotsFeedbackDialog
+import com.example.dialogpackaged.dialog.radio.GamestickRadioDialog
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.logcat.LogUtil
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     commonDialog.findView<TextView>(R.id.tv_title).setText("这就是标题")
                     val dialogDecorator =
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     commonDialog.display()
                 },
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -120,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -136,7 +137,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -152,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -168,7 +169,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -181,7 +182,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -194,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -207,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -220,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     commonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
                         commonDialog.dismiss()
@@ -236,7 +237,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -249,7 +250,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -262,7 +263,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -275,7 +276,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -289,7 +290,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -305,7 +306,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -320,7 +321,7 @@ class MainActivity : AppCompatActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.layout_gamestick_selector
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val dialogDecorator =
                         DialogDecorator(
@@ -429,9 +430,73 @@ class MainActivity : AppCompatActivity() {
                         setCancelable(DialogDecorator.DismissResponse.RESPONSE_4)
                         display()
                     }
-
-
                 },
+
+                GuideItemEntity("Gamestick单选弹窗，4选项") {
+                    val gamestickRadioDialog = GamestickRadioDialog(this, arrayOf("燃起斗志", "吃鸡神曲", "王者战歌", "无音乐"),
+                        2, object : GamestickRadioDialog.OnDialogClickListener {
+                            override fun onLeftButtonClick() {
+                                LogUtil.d("按了取消")
+                            }
+
+                            override fun onRightButtonClick(index: Int) {
+                                LogUtil.d("按了确定: $index")
+                            }
+
+                            override fun onItemSelected(index: Int) {
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "选择了 $index",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                            override fun onDisappear() {
+                                LogUtil.d("弹窗消失埋点上报")
+                            }
+
+                        })
+                    DialogDecorator(gamestickRadioDialog).apply {
+                        setVerticalGravityAndBias(DialogDecorator.VerticalPosition.BOTTOM, 50)
+                        setRatioOrSpare(16)
+                        setCancelable(DialogDecorator.DismissResponse.RESPONSE_2)
+                        display()
+                    }
+                },
+                GuideItemEntity("Gamestick单选弹窗，3选项") {
+                    val gamestickRadioDialog = GamestickRadioDialog(this, arrayOf("男", "女", "不愿透露"),
+                        2, object : GamestickRadioDialog.OnDialogClickListener {
+                            override fun onLeftButtonClick() {
+                                LogUtil.d("按了取消")
+                            }
+
+                            override fun onRightButtonClick(index: Int) {
+                                LogUtil.d("按了确定: $index")
+                            }
+
+                            override fun onItemSelected(index: Int) {
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "选择了 $index",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                            override fun onDisappear() {
+                                LogUtil.d("弹窗消失埋点上报")
+                            }
+
+                        })
+                    gamestickRadioDialog.setTitleStr("修改性别")
+                    gamestickRadioDialog.setCancelStr("不修改了")
+                    gamestickRadioDialog.setConfirmStr("确定修改")
+                    DialogDecorator(gamestickRadioDialog).apply {
+                        setVerticalGravityAndBias(DialogDecorator.VerticalPosition.TOP, 0.1F)
+                        setRatioOrSpare(50)
+                        setCancelable(DialogDecorator.DismissResponse.RESPONSE_4)
+                        display()
+                    }
+                }
             )
         )
 

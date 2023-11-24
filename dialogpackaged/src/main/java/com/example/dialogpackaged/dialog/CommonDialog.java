@@ -50,6 +50,6 @@ public class CommonDialog extends Dialog implements DisplayedDialog {
         return mContentView.findViewById(id);
     }
 
-    //给子类进行自定义实现
+    //在show之前，给子类一个设置控件上内容的时机
     protected void customProperty() {}
 }
