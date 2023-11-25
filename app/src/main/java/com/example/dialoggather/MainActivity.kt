@@ -496,7 +496,30 @@ class MainActivity : AppCompatActivity() {
                         setCancelable(DialogDecorator.DismissResponse.RESPONSE_4)
                         display()
                     }
-                }
+                },
+
+                GuideItemEntity("自定义动画") {
+                    val commonDialog =
+                        CommonDialog(
+                            this,
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                        )
+                    DialogDecorator(commonDialog).apply {
+                        setAnimation(R.style.dialogWindowAnim)
+                        display()
+                    }
+                },
+                GuideItemEntity("使用android.R.style.Animation_Dialog动画。但是和不设置还是有区别，后者进入时会有向上，退出时向下的效果") {
+                    val commonDialog =
+                        CommonDialog(
+                            this,
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                        )
+                    DialogDecorator(commonDialog).apply {
+                        setAnimation(android.R.style.Animation_Dialog)
+                        display()
+                    }
+                },
             )
         )
 

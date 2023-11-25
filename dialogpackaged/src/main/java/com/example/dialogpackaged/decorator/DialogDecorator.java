@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.StyleRes;
+
 import com.example.dialogpackaged.DisplayedDialog;
 import com.example.dialogpackaged.dialog.CommonDialog;
 import com.example.utilsgather.ui.SizeTransferUtil;
@@ -273,6 +275,13 @@ public class DialogDecorator implements DisplayedDialog {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 设置动画（可以包括进入和退出）
+     */
+    public void setAnimation(@StyleRes int styleId) {
+        mDialogWindow.setWindowAnimations(styleId);
     }
 
     @Override
