@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dialoggather.databinding.ActivityMainBinding
 import com.example.dialogpackaged.decorator.DialogDecorator
+import com.example.dialogpackaged.decorator.TimerDecorator
 import com.example.dialogpackaged.dialog.CommonDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog.EventCallback
@@ -524,15 +525,42 @@ class MainActivity : CallbackActivity() {
                     }
                 },
 
-                GuideItemEntity("仅创建弹窗，但是不展示（啥都不会回调）") {
+                GuideItemEntity("3.0 仅创建弹窗，但是不展示(啥都不会回调)") {
                     tempCommonDialog =
                         CommonDialog(
                             this,
                             R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                 },
-                GuideItemEntity("展示之前创建的弹窗(第二次不回调onCreate)") {
+                //(第二次不回调onCreate)
+                GuideItemEntity("3.1 展示之前创建的弹窗") {
                     tempCommonDialog.display()
+                },
+                GuideItemEntity("3.2 展示之前创建的弹窗，取消按钮用dismiss进行关闭") {
+                    tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
+                        tempCommonDialog.dismiss()
+                    }
+                    DialogDecorator(tempCommonDialog).apply {
+                        display()
+                    }
+                },
+                GuideItemEntity("3.3 展示之前创建的弹窗，取消按钮用cancel进行关闭") {
+                    tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
+                        tempCommonDialog.cancel()
+                    }
+                    DialogDecorator(tempCommonDialog).apply {
+                        display()
+                    }
+                },
+
+                GuideItemEntity("4.0 定时关闭的弹窗") {
+                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
+                            findView<Button>(R.id.btn_cancel).setOnClickListener { dismiss() }
+                        }
+                    /*val dialogDecorator = DialogDecorator(commonDialog).apply {
+                        display()
+                    }*/
+                    TimerDecorator(commonDialog, 3000).display()
                 },
             )
         )
