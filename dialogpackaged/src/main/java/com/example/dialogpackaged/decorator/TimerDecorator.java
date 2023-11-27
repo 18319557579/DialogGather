@@ -11,7 +11,6 @@ import java.util.TimerTask;
 
 public class TimerDecorator extends Decorator {
 
-    private Timer timer;
     private long dismissDelay = 3000L;  //默认的延迟时间
 
     public TimerDecorator(DisplayedDialog displayedDialog) {
@@ -20,7 +19,7 @@ public class TimerDecorator extends Decorator {
     }
 
     private void init() {
-        timer = new Timer();
+
     }
 
     public void setDismissDelay(long dismissDelay) {
@@ -29,6 +28,8 @@ public class TimerDecorator extends Decorator {
 
     @Override
     public void display() {
+        Timer timer = new Timer();
+
         mDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
@@ -50,7 +51,7 @@ public class TimerDecorator extends Decorator {
         mDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                //取消定时器，那么TimerTask.run()就不会回调了
+                //取消定时器，那么TimerTask.run()就不会回调了。到时间后，这里是必定会被回调的，因此在这里做赋值null的操作
                 LogUtil.d("定时器已被取消");
                 timer.cancel();
             }

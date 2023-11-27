@@ -21,7 +21,11 @@ import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
 class MainActivity : CallbackActivity() {
 
-    lateinit var tempCommonDialog: CommonDialog
+    lateinit var tempCommonDialog: CommonDialog  //临时存储，用于测试CommonDialog实例的复用
+
+    lateinit var tempTimerDialog: TimerDecorator  //临时存储用于测试TimerDecorator实例的复用
+
+    lateinit var tempStyleDialog: StyleDecorator  //临时存储用于测试TimerDecorator实例的复用
 
     private val mainBinding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -540,7 +544,8 @@ class MainActivity : CallbackActivity() {
                     }
                 },
 
-                GuideItemEntity("3.0 仅创建弹窗，但是不展示(啥都不会回调)") {
+                //(啥都不会回调)
+                GuideItemEntity("3 仅创建弹窗，保存到内存") {
                     tempCommonDialog =
                         CommonDialog(
                             this,
@@ -548,10 +553,10 @@ class MainActivity : CallbackActivity() {
                         )
                 },
                 //(第二次不回调onCreate)
-                GuideItemEntity("3.1 展示之前创建的弹窗") {
+                GuideItemEntity("展示之前创建的弹窗") {
                     tempCommonDialog.display()
                 },
-                GuideItemEntity("3.2 展示之前创建的弹窗，取消按钮用dismiss进行关闭") {
+                GuideItemEntity("展示之前创建的弹窗，取消按钮用dismiss进行关闭") {
                     tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
                         tempCommonDialog.dismiss()
                     }
@@ -561,7 +566,7 @@ class MainActivity : CallbackActivity() {
                         display()
                     }
                 },
-                GuideItemEntity("3.3 展示之前创建的弹窗，取消按钮用cancel进行关闭") {
+                GuideItemEntity("展示之前创建的弹窗，取消按钮用cancel进行关闭") {
                     tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
                         tempCommonDialog.cancel()
                     }
@@ -604,6 +609,24 @@ class MainActivity : CallbackActivity() {
                             commonDialog
                         )
                     ).display()
+                },
+
+                //这里是为了测试TimerDecorator装饰的弹窗可以进行实例复用
+                GuideItemEntity("5 创建TimerDecorator装饰的弹窗，并保存到内存") {
+                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation)
+                    tempTimerDialog = TimerDecorator(commonDialog)
+                },
+                GuideItemEntity("复用TimerDecorator实例") {
+                    tempTimerDialog.display()
+                },
+
+                //这里是为了测试StyleDecorator装饰的弹窗可以进行实例复用
+                GuideItemEntity("6 创建StyleDecorator装饰的弹窗，并保存到内存") {
+                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation)
+                    tempStyleDialog = StyleDecorator(commonDialog)
+                },
+                GuideItemEntity("复用StyleDecorator实例") {
+                    tempStyleDialog.display()
                 },
             )
         )
