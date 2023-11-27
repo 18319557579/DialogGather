@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dialogpackaged.decorator.DialogDecorator;
+import com.example.dialogpackaged.decorator.StyleDecorator;
 import com.example.dialogpackaged.dialog.CommonDialog;
 
 public class DialogActivity extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class DialogActivity extends AppCompatActivity {
 
         CommonDialog commonDialog = new CommonDialog(this, R.layout.activity_dialog);
 
-        DisplayedDialog dialogDecorator = new DialogDecorator(commonDialog);
+        DisplayedDialog dialogDecorator = new StyleDecorator(commonDialog);
         dialogDecorator.display();
 
 

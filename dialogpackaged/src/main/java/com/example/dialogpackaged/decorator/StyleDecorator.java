@@ -13,13 +13,12 @@ import android.view.WindowManager;
 import androidx.annotation.StyleRes;
 
 import com.example.dialogpackaged.DisplayedDialog;
-import com.example.dialogpackaged.dialog.CommonDialog;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
 import java.lang.reflect.Field;
 
-public class DialogDecorator extends Decorator {
+public class StyleDecorator extends Decorator {
 
 
     //Dialog返回事件的响应方式
@@ -55,18 +54,7 @@ public class DialogDecorator extends Decorator {
     private float mWidthRatio = 4 / 5F;  //水平占比
     private int mWidthSpare = 30;  //水平留白（实际为x2）
 
-    /*public DialogDecorator(CommonDialog mDialog) {
-        super(mDialog);
-//        this.mDialog = mDialog;
-        mDialogWindow = mDialog.getWindow();
-        mDialogContext = mDialog.getContext();
-    }
-
-    public DialogDecorator(Decorator decorator) {
-        super(decorator);
-    }*/
-
-    public DialogDecorator(DisplayedDialog displayedDialog) {
+    public StyleDecorator(DisplayedDialog displayedDialog) {
         super(displayedDialog);
         init();
     }

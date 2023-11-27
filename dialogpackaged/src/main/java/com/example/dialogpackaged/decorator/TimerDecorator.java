@@ -9,16 +9,26 @@ import com.example.utilsgather.logcat.LogUtil;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerDecorator implements DisplayedDialog {
-    private final CommonDialog mDialog;  //被装饰的Dialog本体
+public class TimerDecorator extends Decorator {
 
-    private final Timer timer;
+    private Timer timer;
+    private long dismissDelay = 3000L;  //默认的延迟时间
 
-    public TimerDecorator(CommonDialog mDialog, long dismissDelay) {
-        this.mDialog = mDialog;
+    public TimerDecorator(DisplayedDialog displayedDialog) {
+        super(displayedDialog);
+        init();
+    }
 
+    private void init() {
         timer = new Timer();
+    }
 
+    public void setDismissDelay(long dismissDelay) {
+        this.dismissDelay = dismissDelay;
+    }
+
+    @Override
+    public void display() {
         mDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
@@ -45,11 +55,7 @@ public class TimerDecorator implements DisplayedDialog {
                 timer.cancel();
             }
         });
-    }
 
-
-    @Override
-    public void display() {
-        mDialog.display();
+        super.display();
     }
 }
