@@ -19,7 +19,7 @@ import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
 import java.lang.reflect.Field;
 
-public class DialogDecorator implements DisplayedDialog {
+public class DialogDecorator extends Decorator {
 
 
     //Dialog返回事件的响应方式
@@ -41,7 +41,7 @@ public class DialogDecorator implements DisplayedDialog {
         }
     }
 
-    private final CommonDialog mDialog;  //被装饰的Dialog本体
+//    private final CommonDialog mDialog;  //被装饰的Dialog本体
     private Window mDialogWindow;  //Dialog所在的window
     private Context mDialogContext;  //从Dialog中获得的context
 
@@ -55,13 +55,26 @@ public class DialogDecorator implements DisplayedDialog {
     private float mWidthRatio = 4 / 5F;  //水平占比
     private int mWidthSpare = 30;  //水平留白（实际为x2）
 
-    public DialogDecorator(CommonDialog mDialog) {
-        this.mDialog = mDialog;
+    /*public DialogDecorator(CommonDialog mDialog) {
+        super(mDialog);
+//        this.mDialog = mDialog;
         mDialogWindow = mDialog.getWindow();
         mDialogContext = mDialog.getContext();
     }
 
+    public DialogDecorator(Decorator decorator) {
+        super(decorator);
+    }*/
 
+    public DialogDecorator(DisplayedDialog displayedDialog) {
+        super(displayedDialog);
+        init();
+    }
+
+    private void init() {
+        mDialogWindow = mDialog.getWindow();
+        mDialogContext = mDialog.getContext();
+    }
 
     /**
      * 设置垂直的位置，以及偏移比例
@@ -300,6 +313,7 @@ public class DialogDecorator implements DisplayedDialog {
         }
 
         mDialogWindow.setAttributes(params);
-        mDialog.display();
+
+        super.display();
     }
 }
