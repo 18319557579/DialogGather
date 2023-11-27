@@ -11,10 +11,11 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 
 import com.example.dialogpackaged.DisplayedDialog;
+import com.example.dialogpackaged.dialog_lifecycle.CallbackDialog;
 
 import java.util.Objects;
 
-public class CommonDialog extends Dialog implements DisplayedDialog {
+public class CommonDialog extends CallbackDialog implements DisplayedDialog {
     public final View mContentView;
     public boolean cancelBackEvent = false;
 

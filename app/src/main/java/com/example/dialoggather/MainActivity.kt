@@ -13,12 +13,15 @@ import com.example.dialogpackaged.dialog.GamestickNormalDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog.EventCallback
 import com.example.dialogpackaged.dialog.SlotsFeedbackDialog
 import com.example.dialogpackaged.dialog.radio.GamestickRadioDialog
+import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.logcat.LogUtil
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : CallbackActivity() {
+
+    lateinit var tempCommonDialog: CommonDialog
 
     private val mainBinding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -519,6 +522,17 @@ class MainActivity : AppCompatActivity() {
                         setAnimation(android.R.style.Animation_Dialog)
                         display()
                     }
+                },
+
+                GuideItemEntity("仅创建弹窗，但是不展示（啥都不会回调）") {
+                    tempCommonDialog =
+                        CommonDialog(
+                            this,
+                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                        )
+                },
+                GuideItemEntity("展示之前创建的弹窗(第二次不回调onCreate)") {
+                    tempCommonDialog.display()
                 },
             )
         )
