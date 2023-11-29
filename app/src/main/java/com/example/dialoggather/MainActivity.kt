@@ -1,5 +1,6 @@
 package com.example.dialoggather
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -38,6 +39,9 @@ class MainActivity : CallbackActivity() {
 
         GuideSettings.set(
             mainBinding.lvShowDialog, arrayOf(
+                GuideItemEntity("去MessageDialog测试界面") {
+                    startActivity(Intent(this, TestActivity2::class.java))
+                },
                 GuideItemEntity("基准弹窗") {
                     //该布局的宽度为match_parent，因此如果我们不使用DialogDecorator来设置宽度的话，它将会尽可能地收窄
                     val commonDialog =
