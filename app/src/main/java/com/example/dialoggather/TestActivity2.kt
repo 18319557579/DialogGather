@@ -30,52 +30,136 @@ class TestActivity2 : CallbackActivity() {
                 GuideItemEntity("弹出MessageDialog") {
                     MessageDialogManager.getInstance().tryToShow(frameLayoutContent, "百度")
                 },
-                GuideItemEntity("内容类型，长度类型，size 300") {
+                GuideItemEntity("长度类型，size 300") {
                     val config = Config().apply {
-                        contentType = true
                         lengthType = true
                         size = 300F
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("内容类型，比例类型，size 0.7") {
+                GuideItemEntity("比例类型，size 0.7") {
                     val config = Config().apply {
-                        contentType = true
                         lengthType = false
                         size = 0.7F
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("留白类型，长度类型，size 25") {
+                GuideItemEntity("左上") {
                     val config = Config().apply {
-                        contentType = false
                         lengthType = true
-                        size = 50F
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_LEFT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_TOP
+                        verticalMargin = 10
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("留白类型，比例类型，size 0.05") {
+                GuideItemEntity("右上") {
                     val config = Config().apply {
-                        contentType = false
-                        lengthType = false
-                        size = 0.05f
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_RIGHT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_TOP
+                        verticalMargin = 10
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("5") {
-                    
+                GuideItemEntity("中上") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_TOP
+                        verticalMargin = 10
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("6") {
-                    
+                GuideItemEntity("中左") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_LEFT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("7") {
-                    
+                GuideItemEntity("中右") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_RIGHT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("8") {
-                    
+                GuideItemEntity("中中") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("9") {
-                    
+                GuideItemEntity("左下") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_LEFT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 10
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                },
+                GuideItemEntity("右下") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_RIGHT
+                        horizontalMargin = 5
+
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 10
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                },
+                GuideItemEntity("中下") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 10
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
                 GuideItemEntity("10") {
                     

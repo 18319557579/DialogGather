@@ -10,12 +10,14 @@
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF3EF"/>
+        android:background="#FFF3EF">
+        <ListView
+            android:id="@+id/lv_show_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
 
-    <ListView
-        android:id="@+id/lv_show_message"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@android:color/white"/>
+    </FrameLayout>
+
 
 </FrameLayout>

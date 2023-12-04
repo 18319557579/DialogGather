@@ -22,15 +22,24 @@ public class FloatLayoutManager {
         FloatLayer floatLayer = new FloatLayer(frameLayout.getContext(), R.layout.medi_tiny_message_bar);
 
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        layoutParams.bottomMargin = (int) frameLayout.getContext().getResources().getDimension(R.dimen.medi_messagebox_bottom_margin);
+        layoutParams.gravity = config.verticalLocation | config.horizontalLocation;
 
-        int realSize = config.lengthType ? SizeTransferUtil.dip2px(config.size, frameLayout.getContext()) :
+        if (config.horizontalLocation == Config.HORIZONTAL_LEFT) {
+            layoutParams.leftMargin = SizeTransferUtil.dip2px(config.horizontalMargin, frameLayout.getContext());
+        } else if (config.horizontalLocation == Config.HORIZONTAL_RIGHT) {
+            layoutParams.rightMargin = SizeTransferUtil.dip2px(config.horizontalMargin, frameLayout.getContext());
+        }
+
+        if (config.verticalLocation == Config.VERTICAL_TOP) {
+            layoutParams.topMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
+        } else if (config.horizontalLocation == Config.VERTICAL_BOTTOM) {
+            layoutParams.bottomMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
+        }
+
+        layoutParams.width = config.lengthType ? SizeTransferUtil.dip2px(config.size, frameLayout.getContext()) :
                 (int) (ScreenSizeUtil.getScreenWidth(frameLayout.getContext()) * config.size);
-        layoutParams.width = config.contentType ? realSize : ScreenSizeUtil.getScreenWidth(frameLayout.getContext()) - realSize;
 
         floatLayer.setLayoutParams(layoutParams);
-
         floatLayer.show(frameLayout);
     }
 }
