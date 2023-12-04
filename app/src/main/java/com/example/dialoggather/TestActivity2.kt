@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.dialoggather.databinding.ActivityTest2Binding
 import com.example.messagedialog.MessageDialogManager
+import com.example.messagedialog.float_layer.Config
+import com.example.messagedialog.float_layer.FloatLayoutManager
 import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
@@ -28,17 +30,37 @@ class TestActivity2 : CallbackActivity() {
                 GuideItemEntity("弹出MessageDialog") {
                     MessageDialogManager.getInstance().tryToShow(frameLayoutContent, "百度")
                 },
-                GuideItemEntity("1") {
-                    
+                GuideItemEntity("内容类型，长度类型，size 300") {
+                    val config = Config().apply {
+                        contentType = true
+                        lengthType = true
+                        size = 300F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("2") {
-                    
+                GuideItemEntity("内容类型，比例类型，size 0.7") {
+                    val config = Config().apply {
+                        contentType = true
+                        lengthType = false
+                        size = 0.7F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("3") {
-                    
+                GuideItemEntity("留白类型，长度类型，size 25") {
+                    val config = Config().apply {
+                        contentType = false
+                        lengthType = true
+                        size = 50F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
-                GuideItemEntity("4") {
-                    
+                GuideItemEntity("留白类型，比例类型，size 0.05") {
+                    val config = Config().apply {
+                        contentType = false
+                        lengthType = false
+                        size = 0.05f
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
                 },
                 GuideItemEntity("5") {
                     
