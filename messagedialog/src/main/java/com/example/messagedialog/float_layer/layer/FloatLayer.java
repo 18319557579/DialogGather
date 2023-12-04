@@ -1,4 +1,4 @@
-package com.example.messagedialog.float_layer;
+package com.example.messagedialog.float_layer.layer;
 
 import android.content.Context;
 import android.view.View;

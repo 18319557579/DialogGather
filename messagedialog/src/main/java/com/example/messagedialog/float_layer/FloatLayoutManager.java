@@ -1,11 +1,12 @@
 package com.example.messagedialog.float_layer;
 
-import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.example.messagedialog.MessageDialog;
+import androidx.annotation.LayoutRes;
+
 import com.example.messagedialog.R;
+import com.example.messagedialog.float_layer.layer.FloatLayer;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -18,9 +19,11 @@ public class FloatLayoutManager {
         return FloatLayoutManagerHolder.INSTANCE;
     }
 
-    public void show(FrameLayout frameLayout, Config config) {
-        FloatLayer floatLayer = new FloatLayer(frameLayout.getContext(), R.layout.medi_tiny_message_bar);
+    public void show(FrameLayout frameLayout, Config config, @LayoutRes int layoutRes) {
+        show(frameLayout, config, new FloatLayer(frameLayout.getContext(), layoutRes));
+    }
 
+    public void show(FrameLayout frameLayout, Config config, FloatLayer floatLayer) {
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = config.verticalLocation | config.horizontalLocation;
 

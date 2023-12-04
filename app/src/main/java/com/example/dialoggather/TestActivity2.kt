@@ -6,6 +6,7 @@ import com.example.dialoggather.databinding.ActivityTest2Binding
 import com.example.messagedialog.MessageDialogManager
 import com.example.messagedialog.float_layer.Config
 import com.example.messagedialog.float_layer.FloatLayoutManager
+import com.example.messagedialog.float_layer.layer.JumpFloatLayer
 import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
@@ -35,14 +36,14 @@ class TestActivity2 : CallbackActivity() {
                         lengthType = true
                         size = 300F
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("比例类型，size 0.7") {
                     val config = Config().apply {
                         lengthType = false
                         size = 0.7F
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("左上") {
                     val config = Config().apply {
@@ -55,7 +56,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_TOP
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("右上") {
                     val config = Config().apply {
@@ -68,7 +69,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_TOP
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("中上") {
                     val config = Config().apply {
@@ -81,7 +82,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_TOP
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("中左") {
                     val config = Config().apply {
@@ -94,7 +95,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_CENTER
                         verticalMargin = 10  //无效
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("中右") {
                     val config = Config().apply {
@@ -107,7 +108,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_CENTER
                         verticalMargin = 10  //无效
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("中中") {
                     val config = Config().apply {
@@ -120,7 +121,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_CENTER
                         verticalMargin = 10  //无效
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("左下") {
                     val config = Config().apply {
@@ -133,7 +134,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_BOTTOM
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("右下") {
                     val config = Config().apply {
@@ -146,7 +147,7 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_BOTTOM
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
                 GuideItemEntity("中下") {
                     val config = Config().apply {
@@ -159,10 +160,34 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_BOTTOM
                         verticalMargin = 10
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("10") {
-                    
+                GuideItemEntity("用LayoutId进行展示") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+                GuideItemEntity("用FloatLayout进行展示") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+                    }
+                    val jumpFloatLayer = JumpFloatLayer(this@TestActivity2)
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, jumpFloatLayer)
                 },
             )
         )
