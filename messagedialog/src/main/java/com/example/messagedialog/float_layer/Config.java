@@ -47,5 +47,6 @@ public class Config {
     public float selfAlpha = -1;
 
     //动画
-    public @AnimRes int showAnimRes = -1;
+    public @AnimRes int showAnimRes = -1;  //入场动画
+    public @AnimRes int dismissAnimRes = -1;  //出场动画
 }

@@ -16,6 +16,7 @@ import androidx.core.graphics.ColorUtils;
 
 import com.example.messagedialog.R;
 import com.example.messagedialog.float_layer.layer.FloatLayer;
+import com.example.utilsgather.logcat.LogUtil;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -50,15 +51,16 @@ public class FloatLayoutManager {
 
         layoutParams.width = config.lengthType ? SizeTransferUtil.dip2px(config.size, frameLayout.getContext()) :
                 (int) (ScreenSizeUtil.getScreenWidth(frameLayout.getContext()) * config.size);
+        floatLayer.setLayoutParams(layoutParams);
 
         if (config.radius != -1) {
             setRadius(floatLayer, config.radius);
         }
         setBackgroundAlpha(floatLayer, config.bgAlpha);
         setSelfAlpha(floatLayer, config.selfAlpha);
-        setAnimation(floatLayer, config.showAnimRes);
+        setAnimation(floatLayer, config);
+        setDismissAnim(floatLayer, config);
 
-        floatLayer.setLayoutParams(layoutParams);
         floatLayer.show(frameLayout);
     }
 
@@ -123,10 +125,32 @@ public class FloatLayoutManager {
         childView.setAlpha(alpha);
     }
 
-    private void setAnimation(FloatLayer floatLayer, @AnimRes int showAnimRes) {
-        if (showAnimRes == -1) return;
+    private void setAnimation(FloatLayer floatLayer, Config config) {
+        if (config.showAnimRes == -1) return;
 
-        Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), showAnimRes);
+        Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), config.showAnimRes);
         floatLayer.setAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                LogUtil.d("测试 " + "onAnimationStart 回调");
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                LogUtil.d("测试 " + "onAnimationEnd 回调");
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                LogUtil.d("测试 " + "onAnimationRepeat 回调");
+            }
+        });
+    }
+
+    private void setDismissAnim(FloatLayer floatLayer, Config config) {
+        if (config.dismissAnimRes == -1) return;
+        floatLayer.dismissAnimRes = config.dismissAnimRes;
     }
 }
