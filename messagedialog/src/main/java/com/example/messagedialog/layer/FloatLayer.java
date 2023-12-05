@@ -1,9 +1,7 @@
-package com.example.messagedialog.float_layer.layer;
+package com.example.messagedialog.layer;
 
 import android.content.Context;
 import android.view.View;
-import android.view.WindowInsets;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
@@ -11,7 +9,6 @@ import androidx.annotation.AnimRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 
-import com.example.messagedialog.R;
 import com.example.utilsgather.logcat.LogUtil;
 
 public class FloatLayer extends FrameLayout {

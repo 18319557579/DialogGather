@@ -1,4 +1,4 @@
-package com.example.messagedialog.float_layer;
+package com.example.messagedialog;
 
 import android.view.Gravity;
 

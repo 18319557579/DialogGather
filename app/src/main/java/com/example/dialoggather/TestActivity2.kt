@@ -3,13 +3,13 @@ package com.example.dialoggather
 import android.os.Bundle
 import android.widget.Toast
 import com.example.dialoggather.databinding.ActivityTest2Binding
-import com.example.messagedialog.MessageDialogManager
-import com.example.messagedialog.float_layer.Config
-import com.example.messagedialog.float_layer.FloatLayoutManager
-import com.example.messagedialog.float_layer.layer.JumpFloatLayer
+import com.example.messagedialog.Config
+import com.example.messagedialog.FloatLayoutManager
+import com.example.messagedialog.layer.JumpFloatLayer
 import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
+import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
 class TestActivity2 : CallbackActivity() {
 
@@ -20,6 +20,7 @@ class TestActivity2 : CallbackActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
+        ScreenFunctionUtils.hideActionBar(this)
 
         val frameLayoutContent = mBinding.flContent
         frameLayoutContent.setOnClickListener {
@@ -28,9 +29,6 @@ class TestActivity2 : CallbackActivity() {
         
         GuideSettings.set(
             mBinding.lvShowMessage, arrayOf(
-                GuideItemEntity("弹出MessageDialog") {
-                    MessageDialogManager.getInstance().tryToShow(frameLayoutContent, "百度")
-                },
                 GuideItemEntity("长度类型，size 300") {
                     val config = Config().apply {
                         lengthType = true
@@ -45,7 +43,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("左上") {
+                GuideItemEntity("定位，左上") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -58,7 +56,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("右上") {
+                GuideItemEntity("定位，右上") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -71,7 +69,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("中上") {
+                GuideItemEntity("定位，中上") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -84,7 +82,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("中左") {
+                GuideItemEntity("定位，中左") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -97,7 +95,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("中右") {
+                GuideItemEntity("定位，中右") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -110,7 +108,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("中中") {
+                GuideItemEntity("定位，中中") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -123,7 +121,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("左下") {
+                GuideItemEntity("定位，左下") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -136,7 +134,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("右下") {
+                GuideItemEntity("定位，右下") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -149,7 +147,7 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("中下") {
+                GuideItemEntity("定位，中下") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
