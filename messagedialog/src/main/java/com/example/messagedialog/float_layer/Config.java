@@ -39,5 +39,8 @@ public class Config {
     public float radius = -1;
 
     //3.2 背景/透明度
-    public float alpha = -1;  //0代表完全透明，1代表完全不透明
+    public float bgAlpha = -1;  //0代表完全透明，1代表完全不透明
+
+    //3.3 设置自身的透明度（注意背景透明度和自身透明度是两码事，是分开的）
+    public float selfAlpha = -1;
 }

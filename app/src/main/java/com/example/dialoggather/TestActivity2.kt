@@ -221,7 +221,7 @@ class TestActivity2 : CallbackActivity() {
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
 
-                GuideItemEntity("设置透明度，给没有背景的") {
+                GuideItemEntity("设置透明度0.3，给没有背景的") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -229,11 +229,11 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        alpha = 0.3F
+                        bgAlpha = 0.3F
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar_nobg)
                 },
-                GuideItemEntity("设置透明度，给背景类型为<shape>的，即GradientDrawable") {
+                GuideItemEntity("设置透明度0.5，给背景类型为<shape>的，即GradientDrawable") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -241,11 +241,11 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        alpha = 0.5F
+                        bgAlpha = 0.5F
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
-                GuideItemEntity("设置透明度，给背景类型为纯色的，即ColorDrawable") {
+                GuideItemEntity("设置透明度0.8，给背景类型为纯色的，即ColorDrawable") {
                     val config = Config().apply {
                         lengthType = true
                         size = 300F
@@ -253,9 +253,46 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        alpha = 0.8F
+                        bgAlpha = 0.8F
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar_colorbg)
+                },
+
+                GuideItemEntity("设置自身透明度0.5") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        selfAlpha = 0.5F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+                GuideItemEntity("设置自身透明度1") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        selfAlpha = 1F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+                GuideItemEntity("设置自身透明度0") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        selfAlpha = 0F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
             )
         )

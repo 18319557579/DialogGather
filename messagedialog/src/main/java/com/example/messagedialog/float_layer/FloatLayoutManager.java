@@ -4,16 +4,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.LayoutRes;
 import androidx.core.graphics.ColorUtils;
 
-import com.example.messagedialog.R;
 import com.example.messagedialog.float_layer.layer.FloatLayer;
-import com.example.utilsgather.logcat.LogUtil;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -52,7 +50,8 @@ public class FloatLayoutManager {
         if (config.radius != -1) {
             setRadius(floatLayer, config.radius);
         }
-        setBackgroundAlpha(floatLayer, config.alpha);
+        setBackgroundAlpha(floatLayer, config.bgAlpha);
+        setSelfAlpha(floatLayer, config.selfAlpha);
 
 
         floatLayer.setLayoutParams(layoutParams);
@@ -111,5 +110,12 @@ public class FloatLayoutManager {
                 ((ColorDrawable) background).setColor(modifiedBgColor);
             }
         }
+    }
+
+    private void setSelfAlpha(FloatLayer floatLayer, float alpha) {
+        if (alpha == -1) return;
+
+        View childView = floatLayer.soleChildView;
+        childView.setAlpha(alpha);
     }
 }
