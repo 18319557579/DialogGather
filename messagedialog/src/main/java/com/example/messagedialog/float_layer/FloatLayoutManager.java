@@ -4,13 +4,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.LayoutRes;
+import androidx.core.graphics.ColorUtils;
 
 import com.example.messagedialog.R;
 import com.example.messagedialog.float_layer.layer.FloatLayer;
+import com.example.utilsgather.logcat.LogUtil;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -49,6 +52,7 @@ public class FloatLayoutManager {
         if (config.radius != -1) {
             setRadius(floatLayer, config.radius);
         }
+        setBackgroundAlpha(floatLayer, config.alpha);
 
 
         floatLayer.setLayoutParams(layoutParams);
@@ -61,7 +65,7 @@ public class FloatLayoutManager {
         if (background == null) {
             GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-            gradientDrawable.setColor(Color.parseColor("#FFFFFF"));
+            gradientDrawable.setColor(Color.BLACK);
             gradientDrawable.setCornerRadius(SizeTransferUtil.dip2px(cornerRadius, floatLayer.getContext()));
             floatLayer.setBackground(gradientDrawable);
 
@@ -77,6 +81,35 @@ public class FloatLayoutManager {
             gradientDrawable.setColor(((ColorDrawable)background).getColor());
             gradientDrawable.setCornerRadius(SizeTransferUtil.dip2px(cornerRadius, floatLayer.getContext()));
             floatLayer.setBackground(gradientDrawable);
+        }
+    }
+
+    private void setBackgroundAlpha(FloatLayer floatLayer, float alpha) {
+        if (alpha == -1) return;
+
+        Drawable background = floatLayer.soleChildView.getBackground();  //先拿到dialog的背景
+        //如果dialog的资源view是没有背景的，那就设置一个白色的背景
+        if (background == null) {
+            GradientDrawable gradientDrawable = new GradientDrawable();
+            gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+            gradientDrawable.setColor(ColorUtils.setAlphaComponent(Color.BLACK, (int) (alpha * 255)));
+            floatLayer.setBackground(gradientDrawable);
+
+            //如果为GradientDrawable，则修改其拐角半径
+        } else if (background instanceof GradientDrawable) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                int currentBgColor = ((GradientDrawable)background).getColor().getDefaultColor();
+                int modifiedBgColor = ColorUtils.setAlphaComponent(currentBgColor, (int) (alpha * 255));
+                ((GradientDrawable) background).setColor(modifiedBgColor);
+            }
+
+            //发现如果背景为纯色，那么获取到的背景将会是ColorDrawable类型的
+        } else if (background instanceof ColorDrawable) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                int currentBgColor = ((ColorDrawable)background).getColor();
+                int modifiedBgColor = ColorUtils.setAlphaComponent(currentBgColor, (int) (alpha * 255));
+                ((ColorDrawable) background).setColor(modifiedBgColor);
+            }
         }
     }
 }

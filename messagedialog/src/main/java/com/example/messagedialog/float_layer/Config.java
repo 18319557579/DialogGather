@@ -38,5 +38,6 @@ public class Config {
     //3.1 背景/圆角弧度
     public float radius = -1;
 
-
+    //3.2 背景/透明度
+    public float alpha = -1;  //0代表完全透明，1代表完全不透明
 }
