@@ -6,11 +6,15 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import androidx.annotation.AnimRes;
 import androidx.annotation.LayoutRes;
 import androidx.core.graphics.ColorUtils;
 
+import com.example.messagedialog.R;
 import com.example.messagedialog.float_layer.layer.FloatLayer;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
@@ -52,7 +56,7 @@ public class FloatLayoutManager {
         }
         setBackgroundAlpha(floatLayer, config.bgAlpha);
         setSelfAlpha(floatLayer, config.selfAlpha);
-
+        setAnimation(floatLayer, config.showAnimRes);
 
         floatLayer.setLayoutParams(layoutParams);
         floatLayer.show(frameLayout);
@@ -117,5 +121,12 @@ public class FloatLayoutManager {
 
         View childView = floatLayer.soleChildView;
         childView.setAlpha(alpha);
+    }
+
+    private void setAnimation(FloatLayer floatLayer, @AnimRes int showAnimRes) {
+        if (showAnimRes == -1) return;
+
+        Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), showAnimRes);
+        floatLayer.setAnimation(animation);
     }
 }

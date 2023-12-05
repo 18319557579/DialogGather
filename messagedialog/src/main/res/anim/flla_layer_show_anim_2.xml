@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--pivotX和pivotY都是基于自身的位置，由此来确定一个点-->
+    <rotate
+        android:duration="1000"
+        android:fromDegrees="300"
+        android:toDegrees="-360"
+
+        android:pivotX="20%"
+        android:pivotY="100%"/>
+
+</set>

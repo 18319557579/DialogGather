@@ -2,6 +2,8 @@ package com.example.messagedialog.float_layer;
 
 import android.view.Gravity;
 
+import androidx.annotation.AnimRes;
+
 public class Config {
     /*public enum WidthType {
         SET_CONTENT,
@@ -43,4 +45,7 @@ public class Config {
 
     //3.3 设置自身的透明度（注意背景透明度和自身透明度是两码事，是分开的）
     public float selfAlpha = -1;
+
+    //动画
+    public @AnimRes int showAnimRes = -1;
 }
