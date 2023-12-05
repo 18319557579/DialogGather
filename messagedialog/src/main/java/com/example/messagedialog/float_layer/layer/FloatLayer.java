@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 
 public class FloatLayer extends FrameLayout {
 
-    private FrameLayout hostLayout;
+    private FrameLayout hostLayout;  //宿主布局
+    public View soleChildView;  //唯一的子View
 
     public FloatLayer(@NonNull Context context, @LayoutRes int layoutRes) {
         super(context);
-        addView(getContentView(layoutRes));
+        addView(soleChildView = getContentView(layoutRes));
 
         setOnClickListener(new OnClickListener() {
             @Override

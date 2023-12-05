@@ -189,6 +189,37 @@ class TestActivity2 : CallbackActivity() {
                     val jumpFloatLayer = JumpFloatLayer(this@TestActivity2)
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, jumpFloatLayer)
                 },
+
+                GuideItemEntity("设置圆角弧度，为5dp") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+
+                        radius = 5F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+                GuideItemEntity("设置圆角弧度，无穷大") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        horizontalMargin = 5  //无效
+
+                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalMargin = 10  //无效
+
+                        radius = Float.MAX_VALUE
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
             )
         )
     }
