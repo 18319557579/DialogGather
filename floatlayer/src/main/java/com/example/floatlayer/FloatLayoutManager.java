@@ -1,4 +1,4 @@
-package com.example.messagedialog;
+package com.example.floatlayer;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.LayoutRes;
 import androidx.core.graphics.ColorUtils;
 
-import com.example.messagedialog.layer.FloatLayer;
+import com.example.floatlayer.layer.FloatLayer;
 import com.example.utilsgather.logcat.LogUtil;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;

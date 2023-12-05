@@ -39,7 +39,7 @@ class MainActivity : CallbackActivity() {
 
         GuideSettings.set(
             mainBinding.lvShowDialog, arrayOf(
-                GuideItemEntity("去MessageDialog测试界面") {
+                GuideItemEntity("去FloatLayer测试界面") {
                     startActivity(Intent(this, TestActivity2::class.java))
                 },
                 GuideItemEntity("基准弹窗") {

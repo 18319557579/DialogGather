@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.messagedialog'
+    namespace 'com.example.floatlayer'
     compileSdkVersion 34
 
     defaultConfig {

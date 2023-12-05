@@ -1,4 +1,4 @@
-package com.example.messagedialog;
+package com.example.floatlayer;
 
 import org.junit.Test;
 

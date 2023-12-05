@@ -3,9 +3,9 @@ package com.example.dialoggather
 import android.os.Bundle
 import android.widget.Toast
 import com.example.dialoggather.databinding.ActivityTest2Binding
-import com.example.messagedialog.Config
-import com.example.messagedialog.FloatLayoutManager
-import com.example.messagedialog.layer.JumpFloatLayer
+import com.example.floatlayer.Config
+import com.example.floatlayer.FloatLayoutManager
+import com.example.floatlayer.layer.JumpFloatLayer
 import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
@@ -301,7 +301,7 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        showAnimRes = com.example.messagedialog.R.anim.flla_layer_show_anim_1
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
@@ -313,7 +313,7 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        showAnimRes = com.example.messagedialog.R.anim.flla_layer_show_anim_2
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_2
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
@@ -325,7 +325,7 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        showAnimRes = com.example.messagedialog.R.anim.flla_layer_show_anim_3
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_3
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
@@ -338,7 +338,7 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        dismissAnimRes = com.example.messagedialog.R.anim.flla_layer_dismiss_anim_1
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
@@ -350,8 +350,8 @@ class TestActivity2 : CallbackActivity() {
                         horizontalLocation = Config.HORIZONTAL_CENTER
                         verticalLocation = Config.VERTICAL_CENTER
 
-                        showAnimRes = com.example.messagedialog.R.anim.flla_layer_show_anim_1
-                        dismissAnimRes = com.example.messagedialog.R.anim.flla_layer_dismiss_anim_1
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
