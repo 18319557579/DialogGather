@@ -2,6 +2,7 @@ package com.example.floatlayer.layer;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
@@ -17,6 +18,9 @@ public class FloatLayer extends FrameLayout {
     public View soleChildView;  //唯一的子View
 
     public @AnimRes int dismissAnimRes = -1;  //出场动画
+
+    private LayerCallback layerCallback;
+
 
     public FloatLayer(@NonNull Context context, @LayoutRes int layoutRes) {
         super(context);
@@ -45,6 +49,9 @@ public class FloatLayer extends FrameLayout {
         this.hostLayout = hostLayout;
         windup();
         hostLayout.addView(this);
+        if (layerCallback != null) {
+            layerCallback.onShow();
+        }
     }
 
     /**
@@ -60,5 +67,16 @@ public class FloatLayer extends FrameLayout {
                 hostLayout.removeView(FloatLayer.this);
             }
         });
+    }
+
+    public void dismiss() {
+        hostLayout.removeView(FloatLayer.this);
+        if (layerCallback != null) {
+            layerCallback.onDismiss();
+        }
+    }
+
+    public boolean exist() {
+        return hostLayout.indexOfChild(this) > -1;
     }
 }

@@ -348,10 +348,37 @@ class TestActivity2 : CallbackActivity() {
                         size = 300F
 
                         horizontalLocation = Config.HORIZONTAL_CENTER
-                        verticalLocation = Config.VERTICAL_CENTER
+                        verticalLocation = Config.VERTICAL_TOP
+                        verticalMargin = 100
 
                         showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
                         dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+
+                GuideItemEntity("定时3000毫秒后消失，无出场动画") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        delayMillis = 3000
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
+                },
+                GuideItemEntity("定时3000毫秒后消失，第一种出场动画") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1
+                        delayMillis = 3000
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },

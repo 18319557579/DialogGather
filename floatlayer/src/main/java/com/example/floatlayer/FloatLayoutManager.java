@@ -4,12 +4,15 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import androidx.annotation.AnimRes;
 import androidx.annotation.LayoutRes;
 import androidx.core.graphics.ColorUtils;
 
@@ -60,6 +63,7 @@ public class FloatLayoutManager {
         setDismissAnim(floatLayer, config);
 
         floatLayer.show(frameLayout);
+        setDelayAutoDismiss(floatLayer, config);
     }
 
     private void setRadius(FloatLayer floatLayer, float cornerRadius) {
@@ -150,5 +154,59 @@ public class FloatLayoutManager {
     private void setDismissAnim(FloatLayer floatLayer, Config config) {
         if (config.dismissAnimRes == -1) return;
         floatLayer.dismissAnimRes = config.dismissAnimRes;
+    }
+
+    private void setDelayAutoDismiss(FloatLayer floatLayer, Config config) {
+        if (config.delayMillis == -1) return;
+        //todo 这样不好，传了2个并不是关联的参数，后期考虑用装饰器模式优化
+        new Handler(Looper.getMainLooper()).postDelayed(new DelayRunnable(floatLayer, config.dismissAnimRes), config.delayMillis);
+    }
+
+    public static class DelayRunnable implements Runnable {
+        private final FloatLayer floatLayer;
+        @AnimRes
+        public int dismissAnimRes;
+
+        public DelayRunnable(FloatLayer floatLayer, @AnimRes int dismissAnimRes) {
+            this.floatLayer = floatLayer;
+            this.dismissAnimRes = dismissAnimRes;
+        }
+
+        @Override
+        public void run() {
+            if (! floatLayer.exist()) {
+                LogUtil.d("FloatLayer已经提前消失");
+                return;
+            }
+
+            if (dismissAnimRes == -1) {
+                floatLayer.dismiss();
+                return;
+            }
+
+            Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1);
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            floatLayer.dismiss();
+                        }
+                    });
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            floatLayer.startAnimation(animation);
+        }
     }
 }

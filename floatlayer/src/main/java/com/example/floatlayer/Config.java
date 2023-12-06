@@ -43,10 +43,13 @@ public class Config {
     //3.2 背景/透明度
     public float bgAlpha = -1;  //0代表完全透明，1代表完全不透明
 
-    //3.3 设置自身的透明度（注意背景透明度和自身透明度是两码事，是分开的）
+    //4 设置自身的透明度（注意背景透明度和自身透明度是两码事，是分开的）
     public float selfAlpha = -1;
 
-    //动画
+    //5 动画
     public @AnimRes int showAnimRes = -1;  //入场动画
     public @AnimRes int dismissAnimRes = -1;  //出场动画
+
+    //6 定时自动消失
+    public long delayMillis = -1;
 }
