@@ -1,8 +1,6 @@
 package com.example.floatlayer.layer;
 
-import android.content.Context;
 import android.view.View;
-import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
@@ -22,8 +20,9 @@ public class FloatLayer extends FrameLayout {
     private LayerCallback layerCallback;
 
 
-    public FloatLayer(@NonNull Context context, @LayoutRes int layoutRes) {
-        super(context);
+    public FloatLayer(@NonNull FrameLayout hostLayout, @LayoutRes int layoutRes) {
+        super(hostLayout.getContext());
+        this.hostLayout = hostLayout;
         addView(soleChildView = getContentView(layoutRes));
 
         addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
@@ -45,8 +44,7 @@ public class FloatLayer extends FrameLayout {
         return View.inflate(this.getContext(), layoutRes, null);
     }
 
-    public void show(FrameLayout hostLayout) {
-        this.hostLayout = hostLayout;
+    public void show() {
         windup();
         hostLayout.addView(this);
         if (layerCallback != null) {
@@ -61,16 +59,21 @@ public class FloatLayer extends FrameLayout {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dismissAnimRes != -1) {
-                    setAnimation(AnimationUtils.loadAnimation(getContext(), dismissAnimRes));
-                }
-                hostLayout.removeView(FloatLayer.this);
+                dismissMaybeAnim();
             }
         });
     }
 
-    public void dismiss() {
-        hostLayout.removeView(FloatLayer.this);
+    public void dismissMaybeAnim() {
+        if (dismissAnimRes != -1) {
+            setAnimation(AnimationUtils.loadAnimation(getContext(), dismissAnimRes));
+        }
+        realDismiss();
+    }
+
+    public void realDismiss() {
+        hostLayout.removeView(FloatLayer.this);  //实际的消失
+
         if (layerCallback != null) {
             layerCallback.onDismiss();
         }
@@ -78,5 +81,9 @@ public class FloatLayer extends FrameLayout {
 
     public boolean exist() {
         return hostLayout.indexOfChild(this) > -1;
+    }
+
+    public <T extends View> T findView(int id) {
+        return soleChildView.findViewById(id);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.dialoggather
 
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import com.example.dialoggather.databinding.ActivityTest2Binding
 import com.example.floatlayer.Config
 import com.example.floatlayer.FloatLayoutManager
+import com.example.floatlayer.layer.FloatLayer
 import com.example.floatlayer.layer.JumpFloatLayer
 import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
@@ -184,8 +186,8 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_CENTER
                         verticalMargin = 10  //无效
                     }
-                    val jumpFloatLayer = JumpFloatLayer(this@TestActivity2)
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, jumpFloatLayer)
+                    val jumpFloatLayer = JumpFloatLayer(frameLayoutContent)
+                    FloatLayoutManager.getInstance().show(config, jumpFloatLayer)
                 },
 
                 GuideItemEntity("设置圆角弧度，为5dp") {
@@ -383,7 +385,7 @@ class TestActivity2 : CallbackActivity() {
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
 
-                GuideItemEntity("喜马拉雅") {
+                GuideItemEntity("喜马拉雅，啥都没") {
                     val config = Config().apply {
                         lengthType = false
                         size = 0.8F
@@ -395,7 +397,48 @@ class TestActivity2 : CallbackActivity() {
                         radius = Float.MAX_VALUE
                         bgAlpha = 0.9F
                     }
-                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, com.example.floatlayer.R.layout.flla_layout_ad)
+                    val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.flla_layout_ad)
+                    FloatLayoutManager.getInstance().show(config, floatLayer)
+                },
+                GuideItemEntity("喜马拉雅，点击确定浮层消失并Toast") {
+                    val config = Config().apply {
+                        lengthType = false
+                        size = 0.8F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 100
+
+                        radius = Float.MAX_VALUE
+                        bgAlpha = 0.9F
+                    }
+                    val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.flla_layout_ad)
+                    floatLayer.findView<TextView>(com.example.floatlayer.R.id.flla_ad_tv_ok).setOnClickListener {
+                        floatLayer.dismissMaybeAnim()
+                        Toast.makeText(this, "成功订阅！", Toast.LENGTH_SHORT).show()
+                    }
+                    FloatLayoutManager.getInstance().show(config, floatLayer)
+                },
+                GuideItemEntity("喜马拉雅，点击确定浮层消失并Toast，带出场动画") {
+                    val config = Config().apply {
+                        lengthType = false
+                        size = 0.8F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 100
+
+                        radius = Float.MAX_VALUE
+                        bgAlpha = 0.9F
+
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1
+                    }
+                    val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.flla_layout_ad)
+                    floatLayer.findView<TextView>(com.example.floatlayer.R.id.flla_ad_tv_ok).setOnClickListener {
+                        floatLayer.dismissMaybeAnim()
+                        Toast.makeText(this, "成功订阅！", Toast.LENGTH_SHORT).show()
+                    }
+                    FloatLayoutManager.getInstance().show(config, floatLayer)
                 },
             )
         )

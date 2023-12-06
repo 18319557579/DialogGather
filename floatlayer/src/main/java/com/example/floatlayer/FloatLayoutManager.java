@@ -31,27 +31,27 @@ public class FloatLayoutManager {
     }
 
     public void show(FrameLayout frameLayout, Config config, @LayoutRes int layoutRes) {
-        show(frameLayout, config, new FloatLayer(frameLayout.getContext(), layoutRes));
+        show(config, new FloatLayer(frameLayout, layoutRes));
     }
 
-    public void show(FrameLayout frameLayout, Config config, FloatLayer floatLayer) {
+    public void show(Config config, FloatLayer floatLayer) {
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = config.verticalLocation | config.horizontalLocation;
 
         if (config.horizontalLocation == Config.HORIZONTAL_LEFT) {
-            layoutParams.leftMargin = SizeTransferUtil.dip2px(config.horizontalMargin, frameLayout.getContext());
+            layoutParams.leftMargin = SizeTransferUtil.dip2px(config.horizontalMargin, floatLayer.getContext());
         } else if (config.horizontalLocation == Config.HORIZONTAL_RIGHT) {
-            layoutParams.rightMargin = SizeTransferUtil.dip2px(config.horizontalMargin, frameLayout.getContext());
+            layoutParams.rightMargin = SizeTransferUtil.dip2px(config.horizontalMargin, floatLayer.getContext());
         }
 
         if (config.verticalLocation == Config.VERTICAL_TOP) {
-            layoutParams.topMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
+            layoutParams.topMargin = SizeTransferUtil.dip2px(config.verticalMargin, floatLayer.getContext());
         } else if (config.verticalLocation == Config.VERTICAL_BOTTOM) {
-            layoutParams.bottomMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
+            layoutParams.bottomMargin = SizeTransferUtil.dip2px(config.verticalMargin, floatLayer.getContext());
         }
 
-        layoutParams.width = config.lengthType ? SizeTransferUtil.dip2px(config.size, frameLayout.getContext()) :
-                (int) (ScreenSizeUtil.getScreenWidth(frameLayout.getContext()) * config.size);
+        layoutParams.width = config.lengthType ? SizeTransferUtil.dip2px(config.size, floatLayer.getContext()) :
+                (int) (ScreenSizeUtil.getScreenWidth(floatLayer.getContext()) * config.size);
         floatLayer.setLayoutParams(layoutParams);
 
         if (config.radius != -1) {
@@ -62,7 +62,7 @@ public class FloatLayoutManager {
         setAnimation(floatLayer, config);
         setDismissAnim(floatLayer, config);
 
-        floatLayer.show(frameLayout);
+        floatLayer.show();
         setDelayAutoDismiss(floatLayer, config);
     }
 
@@ -180,7 +180,7 @@ public class FloatLayoutManager {
             }
 
             if (dismissAnimRes == -1) {
-                floatLayer.dismiss();
+                floatLayer.realDismiss();  //下面将会应用出场动画，所以要直接调用真实的dismiss
                 return;
             }
 
@@ -196,7 +196,7 @@ public class FloatLayoutManager {
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {
-                            floatLayer.dismiss();
+                            floatLayer.realDismiss();
                         }
                     });
                 }
