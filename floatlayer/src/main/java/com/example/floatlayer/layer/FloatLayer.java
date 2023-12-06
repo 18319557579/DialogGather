@@ -55,7 +55,7 @@ public class FloatLayer extends FrameLayout {
     /**
      * 最后执行的一些操作
      */
-    private void windup() {
+    protected void windup() {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

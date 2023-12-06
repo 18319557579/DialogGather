@@ -184,7 +184,7 @@ public class FloatLayoutManager {
                 return;
             }
 
-            Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), com.example.floatlayer.R.anim.flla_layer_dismiss_anim_1);
+            Animation animation = AnimationUtils.loadAnimation(floatLayer.getContext(), dismissAnimRes);
             animation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {

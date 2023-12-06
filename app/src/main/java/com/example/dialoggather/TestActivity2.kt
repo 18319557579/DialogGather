@@ -186,8 +186,8 @@ class TestActivity2 : CallbackActivity() {
                         verticalLocation = Config.VERTICAL_CENTER
                         verticalMargin = 10  //无效
                     }
-                    val jumpFloatLayer = JumpFloatLayer(frameLayoutContent)
-                    FloatLayoutManager.getInstance().show(config, jumpFloatLayer)
+                    val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar)
+                    FloatLayoutManager.getInstance().show(config, floatLayer)
                 },
 
                 GuideItemEntity("设置圆角弧度，为5dp") {
@@ -439,6 +439,28 @@ class TestActivity2 : CallbackActivity() {
                         Toast.makeText(this, "成功订阅！", Toast.LENGTH_SHORT).show()
                     }
                     FloatLayoutManager.getInstance().show(config, floatLayer)
+                },
+
+                GuideItemEntity("模仿X浏览器的弹窗。3500毫秒后自动消失，自动消失有动画。手动消失无动画") {
+                    val config = Config().apply {
+                        lengthType = false
+                        size = 0.75F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 100
+
+                        radius = Float.MAX_VALUE
+                        delayMillis = 3500
+
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_2
+                    }
+                    val jumpFloatLayer = JumpFloatLayer(frameLayoutContent) {
+                        Toast.makeText(this, "跳转到第三方App", Toast.LENGTH_SHORT).show()
+                    }
+                    jumpFloatLayer.setAppName("小红书")
+
+                    FloatLayoutManager.getInstance().show(config, jumpFloatLayer)
                 },
             )
         )
