@@ -382,6 +382,21 @@ class TestActivity2 : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(frameLayoutContent, config, R.layout.medi_tiny_message_bar)
                 },
+
+                GuideItemEntity("喜马拉雅") {
+                    val config = Config().apply {
+                        lengthType = false
+                        size = 0.8F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 100
+
+                        radius = Float.MAX_VALUE
+                        bgAlpha = 0.9F
+                    }
+                    FloatLayoutManager.getInstance().show(frameLayoutContent, config, com.example.floatlayer.R.layout.flla_layout_ad)
+                },
             )
         )
     }

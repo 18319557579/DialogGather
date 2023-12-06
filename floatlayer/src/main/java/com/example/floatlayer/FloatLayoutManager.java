@@ -46,7 +46,7 @@ public class FloatLayoutManager {
 
         if (config.verticalLocation == Config.VERTICAL_TOP) {
             layoutParams.topMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
-        } else if (config.horizontalLocation == Config.VERTICAL_BOTTOM) {
+        } else if (config.verticalLocation == Config.VERTICAL_BOTTOM) {
             layoutParams.bottomMargin = SizeTransferUtil.dip2px(config.verticalMargin, frameLayout.getContext());
         }
 
@@ -74,7 +74,7 @@ public class FloatLayoutManager {
             gradientDrawable.setShape(GradientDrawable.RECTANGLE);
             gradientDrawable.setColor(Color.BLACK);
             gradientDrawable.setCornerRadius(SizeTransferUtil.dip2px(cornerRadius, floatLayer.getContext()));
-            floatLayer.setBackground(gradientDrawable);
+            floatLayer.soleChildView.setBackground(gradientDrawable);
 
             //如果为GradientDrawable，则修改其拐角半径
         } else if (background instanceof GradientDrawable) {
@@ -87,7 +87,7 @@ public class FloatLayoutManager {
             gradientDrawable.setShape(GradientDrawable.RECTANGLE);
             gradientDrawable.setColor(((ColorDrawable)background).getColor());
             gradientDrawable.setCornerRadius(SizeTransferUtil.dip2px(cornerRadius, floatLayer.getContext()));
-            floatLayer.setBackground(gradientDrawable);
+            floatLayer.soleChildView.setBackground(gradientDrawable);
         }
     }
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#356B6E"
+    android:paddingHorizontal="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/flla_ad_tv_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="确定"
+        android:textColor="#FF382A"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="喜马拉雅"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="招募配音学员"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/flla_ad_tv_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:text="取消"
+        android:layout_centerVertical="true"
+        android:textSize="16sp"/>
+</RelativeLayout>
+
