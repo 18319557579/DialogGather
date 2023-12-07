@@ -1,7 +1,9 @@
 package com.example.floatlayer.storage;
 
+import android.health.connect.TimeInstantRangeFilter;
 import android.widget.FrameLayout;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -115,7 +117,26 @@ public class FloatLayerStorage {
         if (inlineItemQueue != null)
             return inlineItemQueue;
 
-        LabelSave labelSave = new LabelSave(new PriorityQueue<>());
+        LabelSave labelSave = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            labelSave = new LabelSave(new PriorityQueue<>(new Comparator<InlineItem>() {
+                @Override
+                public int compare(InlineItem o1, InlineItem o2) {
+                    if (o2.priority - o1.priority != 0) {  //意思是顺序能确定
+                        return o2.priority - o1.priority;  //优先级降序（因为正数为交换顺序，那么就会将后面的元素排到前面去。而priority越大，代表优先级越高）
+                    }
+
+                    if (o1.timestamp - o2.timestamp > 0) {  //时间升序，先进入队列的排在前面
+                        return 1;
+                    } else if (o1.timestamp - o2.timestamp < 0) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                    //todo 这里不直接使用long转int进行返回，是因为担心long转int会改变符号，不确定是否真的会
+                }
+            }));
+        }
         labelMap.put(label, labelSave);
         return labelSave;
     }

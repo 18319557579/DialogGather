@@ -21,7 +21,8 @@ import com.example.floatlayer.layer.LayerCallback;
 import com.example.floatlayer.storage.FloatLayerItem;
 import com.example.floatlayer.storage.FloatLayerStorage;
 import com.example.utilsgather.logcat.LogUtil;
-import com.example.utilsgather.random.StringRandom;
+
+import com.example.utilsgather.random.StringRandomUtil;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -36,22 +37,18 @@ public class FloatLayoutManager {
 
     FloatLayerStorage floatLayerStorage = new FloatLayerStorage();  //用于存储当前展示和队列中的FloatLayer
 
-    public void show(FrameLayout frameLayout, Config config, @LayoutRes int layoutRes) {
-        show(config, new FloatLayer(frameLayout, layoutRes));
-    }
-
-
-    //全都主线程
-    public void show(Config config, FloatLayer floatLayer) {
+    public void show(Config config, FloatLayer floatLayer, String label, int priority) {
         FrameLayout hostLayout = floatLayer.hostLayout;
-        String label = StringRandom.getRandomString();
-        int priority = 0;
         FloatLayerItem floatLayerItem = new FloatLayerItem(floatLayer, config);
-
-        floatLayer.setLayerCallback(new MyLayerCallback(floatLayer.hostLayout, floatLayer, config, priority, label));
+        floatLayer.setLayerCallback(new MyLayerCallback(hostLayout, floatLayer, config, priority, label));
         floatLayerStorage.putFloatLayerItem(hostLayout, label, priority, floatLayerItem);
 
         captureAndShow(hostLayout, label);
+    }
+
+    //全都主线程
+    public void show(Config config, FloatLayer floatLayer) {
+        show(config, floatLayer, StringRandomUtil.getRandomString(), 0);
     }
 
     /**
