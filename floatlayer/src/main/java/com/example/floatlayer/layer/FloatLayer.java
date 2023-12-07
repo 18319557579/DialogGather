@@ -12,7 +12,7 @@ import com.example.utilsgather.logcat.LogUtil;
 
 public class FloatLayer extends FrameLayout {
 
-    private FrameLayout hostLayout;  //宿主布局
+    public FrameLayout hostLayout;  //宿主布局
     public View soleChildView;  //唯一的子View
 
     public @AnimRes int dismissAnimRes = -1;  //出场动画
@@ -30,12 +30,18 @@ public class FloatLayer extends FrameLayout {
             @Override
             public void onViewAttachedToWindow(@NonNull View v) {
                 LogUtil.d("测试 " + "onViewAttachedToWindow 回调" + v);
+                if (layerCallback != null) {
+                    layerCallback.onShow();
+                }
             }
 
             //在动画结束后才会回调该方法，意思就是动画时间越长，该方法回调得越晚
             @Override
             public void onViewDetachedFromWindow(@NonNull View v) {
                 LogUtil.d("测试 " + "onViewDetachedFromWindow 回调" + v);
+                if (layerCallback != null) {
+                    layerCallback.onDismiss();
+                }
             }
         });
     }
@@ -47,9 +53,7 @@ public class FloatLayer extends FrameLayout {
     public void show() {
         windup();
         hostLayout.addView(this);
-        if (layerCallback != null) {
-            layerCallback.onShow();
-        }
+
     }
 
     /**
@@ -74,9 +78,6 @@ public class FloatLayer extends FrameLayout {
     public void realDismiss() {
         hostLayout.removeView(FloatLayer.this);  //实际的消失
 
-        if (layerCallback != null) {
-            layerCallback.onDismiss();
-        }
     }
 
     public boolean exist() {
@@ -85,5 +86,12 @@ public class FloatLayer extends FrameLayout {
 
     public <T extends View> T findView(int id) {
         return soleChildView.findViewById(id);
+    }
+
+    /**
+     * 设置监听器
+     */
+    public void setLayerCallback(LayerCallback layerCallback) {
+        this.layerCallback = layerCallback;
     }
 }

@@ -17,7 +17,11 @@ import androidx.annotation.LayoutRes;
 import androidx.core.graphics.ColorUtils;
 
 import com.example.floatlayer.layer.FloatLayer;
+import com.example.floatlayer.layer.LayerCallback;
+import com.example.floatlayer.storage.FloatLayerItem;
+import com.example.floatlayer.storage.FloatLayerStorage;
 import com.example.utilsgather.logcat.LogUtil;
+import com.example.utilsgather.random.StringRandom;
 import com.example.utilsgather.ui.SizeTransferUtil;
 import com.example.utilsgather.ui.screen.ScreenSizeUtil;
 
@@ -30,11 +34,40 @@ public class FloatLayoutManager {
         return FloatLayoutManagerHolder.INSTANCE;
     }
 
+    FloatLayerStorage floatLayerStorage = new FloatLayerStorage();  //用于存储当前展示和队列中的FloatLayer
+
     public void show(FrameLayout frameLayout, Config config, @LayoutRes int layoutRes) {
         show(config, new FloatLayer(frameLayout, layoutRes));
     }
 
+
+    //全都主线程
     public void show(Config config, FloatLayer floatLayer) {
+        FrameLayout hostLayout = floatLayer.hostLayout;
+        String label = StringRandom.getRandomString();
+        int priority = 0;
+        FloatLayerItem floatLayerItem = new FloatLayerItem(floatLayer, config);
+
+        floatLayer.setLayerCallback(new MyLayerCallback(floatLayer.hostLayout, floatLayer, config, priority, label));
+        floatLayerStorage.putFloatLayerItem(hostLayout, label, priority, floatLayerItem);
+
+        captureAndShow(hostLayout, label);
+    }
+
+    /**
+     * 先判断当前是否有正在展示的，如果没有则拿第一个元素进行展示
+     */
+    public void captureAndShow(FrameLayout frameLayout, String label) {
+        if (floatLayerStorage.isShowing(frameLayout, label))
+            return;
+
+        FloatLayerItem floatLayerItem = floatLayerStorage.getFloatLayerItem(frameLayout, label);
+        if (floatLayerItem == null)  //如果队列里面没有元素了，那么结束
+            return;
+        managerShow(floatLayerItem.config, floatLayerItem.floatLayer);
+    }
+
+    private void managerShow(Config config, FloatLayer floatLayer) {
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = config.verticalLocation | config.horizontalLocation;
 
@@ -193,6 +226,7 @@ public class FloatLayoutManager {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
+                    //todo 这里为什么一定要用Handler，否则会闪退
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {
@@ -207,6 +241,53 @@ public class FloatLayoutManager {
                 }
             });
             floatLayer.startAnimation(animation);
+        }
+    }
+
+    class MyLayerCallback implements LayerCallback {
+        private final FrameLayout frameLayout;
+        private final FloatLayer floatLayer;
+        private final Config config;
+        private int priority = 0;
+        private String label = "DEFAULT_LABEL";
+
+        public MyLayerCallback(FrameLayout frameLayout, FloatLayer floatLayer, Config config) {
+            this.frameLayout = frameLayout;
+            this.floatLayer = floatLayer;
+            this.config = config;
+        }
+
+        public MyLayerCallback(FrameLayout frameLayout, FloatLayer floatLayer, Config config, int priority) {
+            this.frameLayout = frameLayout;
+            this.floatLayer = floatLayer;
+            this.config = config;
+            this.priority = priority;
+        }
+
+        public MyLayerCallback(FrameLayout frameLayout, FloatLayer floatLayer, Config config, String label) {
+            this.frameLayout = frameLayout;
+            this.floatLayer = floatLayer;
+            this.config = config;
+            this.label = label;
+        }
+
+        public MyLayerCallback(FrameLayout frameLayout, FloatLayer floatLayer, Config config, int priority, String label) {
+            this.frameLayout = frameLayout;
+            this.floatLayer = floatLayer;
+            this.config = config;
+            this.priority = priority;
+            this.label = label;
+        }
+
+        @Override
+        public void onShow() {
+
+        }
+
+        @Override
+        public void onDismiss() {
+            floatLayerStorage.setNoShow(frameLayout, label);
+            captureAndShow(frameLayout, label);
         }
     }
 }

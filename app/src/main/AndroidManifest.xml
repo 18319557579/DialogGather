@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DialogGather">
         <activity
-            android:name=".TestActivity2"
+            android:name=".FloatLayerTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FloatLayerTest2Activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

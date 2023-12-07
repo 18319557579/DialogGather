@@ -3,7 +3,6 @@ package com.example.dialoggather
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
-import com.example.dialoggather.databinding.ActivityTest2Binding
 import com.example.floatlayer.Config
 import com.example.floatlayer.FloatLayoutManager
 import com.example.floatlayer.layer.FloatLayer
@@ -12,11 +11,12 @@ import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
+import com.example.dialoggather.databinding.ActivityFloatLayerTestBinding
 
-class TestActivity2 : CallbackActivity() {
+class FloatLayerTestActivity : CallbackActivity() {
 
-    private val mBinding: ActivityTest2Binding by lazy {
-        ActivityTest2Binding.inflate(layoutInflater)
+    private val mBinding: ActivityFloatLayerTestBinding by lazy {
+        ActivityFloatLayerTestBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
