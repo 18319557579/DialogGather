@@ -20,6 +20,7 @@ import com.example.floatlayer.layer.FloatLayer;
 import com.example.floatlayer.layer.LayerCallback;
 import com.example.floatlayer.storage.FloatLayerItem;
 import com.example.floatlayer.storage.FloatLayerStorage;
+import com.example.utilsgather.handler.HandlerUI;
 import com.example.utilsgather.logcat.LogUtil;
 
 import com.example.utilsgather.random.StringRandomUtil;
@@ -38,12 +39,17 @@ public class FloatLayoutManager {
     FloatLayerStorage floatLayerStorage = new FloatLayerStorage();  //用于存储当前展示和队列中的FloatLayer
 
     public void show(Config config, FloatLayer floatLayer, String label, int priority) {
-        FrameLayout hostLayout = floatLayer.hostLayout;
-        FloatLayerItem floatLayerItem = new FloatLayerItem(floatLayer, config);
-        floatLayer.setLayerCallback(new MyLayerCallback(hostLayout, floatLayer, config, priority, label));
-        floatLayerStorage.putFloatLayerItem(hostLayout, label, priority, floatLayerItem);
+        HandlerUI.runOnUI(new Runnable() {
+            @Override
+            public void run() {
+                FrameLayout hostLayout = floatLayer.hostLayout;
+                FloatLayerItem floatLayerItem = new FloatLayerItem(floatLayer, config);
+                floatLayer.setLayerCallback(new MyLayerCallback(hostLayout, floatLayer, config, priority, label));
+                floatLayerStorage.putFloatLayerItem(hostLayout, label, priority, floatLayerItem);
 
-        captureAndShow(hostLayout, label);
+                captureAndShow(hostLayout, label);
+            }
+        });
     }
 
     //全都主线程

@@ -357,6 +357,20 @@ class FloatLayerTestActivity : CallbackActivity() {
                     }
                     FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar))
                 },
+                GuideItemEntity("定时3000毫秒后消失，第一种入场动画 + 第二种出场动画") {
+                    val config = Config().apply {
+                        lengthType = true
+                        size = 300F
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_CENTER
+
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
+                        dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_2
+                        delayMillis = 3000
+                    }
+                    FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar))
+                },
 
                 GuideItemEntity("喜马拉雅，啥都没") {
                     val config = Config().apply {
@@ -426,6 +440,7 @@ class FloatLayerTestActivity : CallbackActivity() {
                         radius = Float.MAX_VALUE
                         delayMillis = 3500
 
+                        showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
                         dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_2
                     }
                     val jumpFloatLayer = JumpFloatLayer(frameLayoutContent) {

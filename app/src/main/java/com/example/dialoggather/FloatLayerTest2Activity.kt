@@ -252,6 +252,23 @@ class FloatLayerTest2Activity : CallbackActivity() {
                 }
                 FloatLayoutManager.getInstance().show(config, floatLayer, "APPLE", 0)
             },
+
+            //测试动画效果是否可以兼容队列
+            GuideItemEntity("相同宿主，相同标识。定时3000毫秒后消失，有入场和出场动画。") {
+                val config = Config().apply {
+                    lengthType = true
+                    size = 300F
+
+                    horizontalLocation = Config.HORIZONTAL_CENTER
+                    verticalLocation = Config.VERTICAL_CENTER
+
+                    showAnimRes = com.example.floatlayer.R.anim.flla_layer_show_anim_1
+                    dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_2
+                    delayMillis = 3000
+                }
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar),
+                    "SHOW_IN", 0)
+            },
         ))
     }
 }
