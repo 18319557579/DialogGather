@@ -86,7 +86,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
             },
 
             //下面这两个用于测试不同标识，互不干扰
-            GuideItemEntity("相同宿主，相同标识，标识one。随机底部边距，避免重叠。3000毫秒后自动消失") {
+            GuideItemEntity("相同宿主，标识one。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
                     lengthType = true
                     size = 300F
@@ -104,7 +104,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                 }
                 FloatLayoutManager.getInstance().show(config, floatLayer,"one", 0)
             },
-            GuideItemEntity("相同宿主，相同标识，标识two。随机底部边距，避免重叠。3000毫秒后自动消失") {
+            GuideItemEntity("相同宿主，标识two。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
                     lengthType = true
                     size = 300F
@@ -123,7 +123,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                 FloatLayoutManager.getInstance().show(config, floatLayer,"two", 0)
             },
 
-            GuideItemEntity("相同宿主，相同标识，我的优先级0。随机底部边距，避免重叠。3000毫秒后自动消失") {
+            GuideItemEntity("相同宿主，相同标识SAME_LABEL，优先级0。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
                     lengthType = true
                     size = 300F
@@ -141,7 +141,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                 }
                 FloatLayoutManager.getInstance().show(config, floatLayer,"SAME_LABEL", 0)
             },
-            GuideItemEntity("相同宿主，相同标识，我的优先级1。随机底部边距，避免重叠。3000毫秒后自动消失") {
+            GuideItemEntity("相同宿主，相同标识SAME_LABEL，优先级1。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
                     lengthType = true
                     size = 300F
@@ -159,7 +159,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                 }
                 FloatLayoutManager.getInstance().show(config, floatLayer,"SAME_LABEL", 1)
             },
-            GuideItemEntity("相同宿主，相同标识，我的优先级3。随机底部边距，避免重叠。3000毫秒后自动消失") {
+            GuideItemEntity("相同宿主，相同标识SAME_LABEL，优先级3。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
                     lengthType = true
                     size = 300F
@@ -176,6 +176,81 @@ class FloatLayerTest2Activity : CallbackActivity() {
                     }
                 }
                 FloatLayoutManager.getInstance().show(config, floatLayer,"SAME_LABEL", 3)
+            },
+
+            GuideItemEntity("上方宿主，随机标识。随机底部边距，避免重叠。3000毫秒后自动消失") {
+                val config = Config().apply {
+                    lengthType = true
+                    size = 300F
+
+                    horizontalLocation = Config.HORIZONTAL_CENTER
+                    verticalLocation = Config.VERTICAL_BOTTOM
+                    verticalMargin = RandomUtil.getRandomInt(0, 150)
+
+                    delayMillis = 3000
+                }
+                val floatLayer = FloatLayer(frameLayoutContentSecond, R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                        setText("上方宿主的")
+                    }
+                }
+                FloatLayoutManager.getInstance().show(config, floatLayer)
+            },
+
+            GuideItemEntity("下方宿主，随机标识。随机底部边距，避免重叠。3000毫秒后自动消失") {
+                val config = Config().apply {
+                    lengthType = true
+                    size = 300F
+
+                    horizontalLocation = Config.HORIZONTAL_CENTER
+                    verticalLocation = Config.VERTICAL_BOTTOM
+                    verticalMargin = RandomUtil.getRandomInt(0, 150)
+
+                    delayMillis = 3000
+                }
+                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                        setText("下方宿主的")
+                    }
+                }
+                FloatLayoutManager.getInstance().show(config, floatLayer)
+            },
+            //下面这两个用于测试，虽然标识相同，不同宿主间也不会干扰
+            GuideItemEntity("上方宿主，相同标识APPLE。随机底部边距，避免重叠。3000毫秒后自动消失") {
+                val config = Config().apply {
+                    lengthType = true
+                    size = 300F
+
+                    horizontalLocation = Config.HORIZONTAL_CENTER
+                    verticalLocation = Config.VERTICAL_BOTTOM
+                    verticalMargin = RandomUtil.getRandomInt(0, 150)
+
+                    delayMillis = 3000
+                }
+                val floatLayer = FloatLayer(frameLayoutContentSecond, R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                        setText("上方宿主的")
+                    }
+                }
+                FloatLayoutManager.getInstance().show(config, floatLayer, "APPLE", 0)
+            },
+            GuideItemEntity("下方宿主，相同标识APPLE。随机底部边距，避免重叠。3000毫秒后自动消失") {
+                val config = Config().apply {
+                    lengthType = true
+                    size = 300F
+
+                    horizontalLocation = Config.HORIZONTAL_CENTER
+                    verticalLocation = Config.VERTICAL_BOTTOM
+                    verticalMargin = RandomUtil.getRandomInt(0, 150)
+
+                    delayMillis = 3000
+                }
+                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                        setText("下方宿主的")
+                    }
+                }
+                FloatLayoutManager.getInstance().show(config, floatLayer, "APPLE", 0)
             },
         ))
     }
