@@ -1,6 +1,5 @@
 package com.example.floatlayer.storage;
 
-import android.health.connect.TimeInstantRangeFilter;
 import android.widget.FrameLayout;
 
 import java.util.Comparator;
@@ -92,15 +91,13 @@ public class FloatLayerStorage {
         LabelSave labelSave = getLabelUnderling(label, labelMap);
         labelSave.currentItem = null;
     }
-/*    *//**
-     * 设置当前在显示的FloatLayer
-     *//*
-    public void setCurrentShow(FrameLayout frameLayout, String label) {
-        HashMap<String, LabelSave> labelMap = getHostUnderling(frameLayout, hostMap);
-        LabelSave labelSave = getLabelUnderling(label, labelMap);
-        labelSave.currentItem =
 
-    }*/
+    /**
+     * 移除某宿主下的所有
+     */
+    public void removeHost(FrameLayout frameLayout) {
+        hostMap.remove(frameLayout);
+    }
     
     private HashMap<String, LabelSave> getHostUnderling(FrameLayout frameLayout, HashMap<FrameLayout, HashMap<String, LabelSave>> hostMap) {
         HashMap<String, LabelSave> labelMap = hostMap.get(frameLayout);

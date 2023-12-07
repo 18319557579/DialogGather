@@ -7,7 +7,7 @@
     tools:context=".FloatLayerTestActivity"
     android:orientation="vertical">
 
-    <FrameLayout
+    <com.example.dialoggather.CustomFrameLayout
         android:id="@+id/fl_content_2_second"
         android:layout_width="match_parent"
         android:layout_height="200dp"

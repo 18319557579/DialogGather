@@ -58,6 +58,21 @@ public class FloatLayoutManager {
     }
 
     /**
+     * 移除某宿主下的所有
+     */
+    public void removeHost(FrameLayout frameLayout) {
+        LogUtil.d("将该宿主下的所有干掉");
+        //todo 实际上当前那个还没有干掉，是不是可以考虑用Handler来干掉。
+        //todo 会不会存在内容泄露的情况，因为宿主在Activity onDestroy后还回调
+        HandlerUI.runOnUI(new Runnable() {
+            @Override
+            public void run() {
+                floatLayerStorage.removeHost(frameLayout);
+            }
+        });
+    }
+
+    /**
      * 先判断当前是否有正在展示的，如果没有则拿第一个元素进行展示
      */
     public void captureAndShow(FrameLayout frameLayout, String label) {
@@ -68,6 +83,8 @@ public class FloatLayoutManager {
         if (floatLayerItem == null)  //如果队列里面没有元素了，那么结束
             return;
         managerShow(floatLayerItem.config, floatLayerItem.floatLayer);
+
+        LogUtil.d("又展示了一个");
     }
 
     private void managerShow(Config config, FloatLayer floatLayer) {
