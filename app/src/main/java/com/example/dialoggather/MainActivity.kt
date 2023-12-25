@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.dialoggather.databinding.ActivityMainBinding
 import com.example.dialogpackaged.decorator.StyleDecorator
 import com.example.dialogpackaged.decorator.TimerDecorator
@@ -632,8 +633,22 @@ class MainActivity : CallbackActivity() {
                     val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation)
                     tempStyleDialog = StyleDecorator(commonDialog)
                 },
-                GuideItemEntity("复用StyleDecorator实例") {
-                    tempStyleDialog.display()
+
+
+                GuideItemEntity("测试一个原始弹窗") {
+                    AlertDialog.Builder(this@MainActivity)
+                        .setTitle("提示")
+                        .setMessage("当前网站安全证书已过期或不可信\n是否继续浏览?")
+                        .setPositiveButton("继续浏览") { dialog, which ->
+                            dialog.dismiss()
+//                            handler.proceed()
+                        }
+                        .setNegativeButton("返回上一页") { dialog, which ->
+                            dialog.dismiss()
+//                            handler.cancel()
+                        }
+                        .create()
+                        .show()
                 },
             )
         )
