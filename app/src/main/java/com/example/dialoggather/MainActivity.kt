@@ -3,10 +3,15 @@ package com.example.dialoggather
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.RoundedCorner
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.dialoggather.databinding.ActivityMainBinding
 import com.example.dialogpackaged.decorator.StyleDecorator
 import com.example.dialogpackaged.decorator.TimerDecorator
@@ -19,6 +24,7 @@ import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.logcat.LogUtil
+import com.example.utilsgather.ui.SizeTransferUtil
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
 class MainActivity : CallbackActivity() {
@@ -635,7 +641,7 @@ class MainActivity : CallbackActivity() {
                 },
 
 
-                GuideItemEntity("测试一个原始弹窗") {
+                GuideItemEntity("测试一个原始弹窗，是SSL证书校验错误的弹窗") {
                     AlertDialog.Builder(this@MainActivity)
                         .setTitle("提示")
                         .setMessage("当前网站安全证书已过期或不可信\n是否继续浏览?")
@@ -649,6 +655,32 @@ class MainActivity : CallbackActivity() {
                         }
                         .create()
                         .show()
+                },
+
+                GuideItemEntity("带Gif的弹窗") {
+                    val commonDialog = CommonDialog(this, R.layout.layout_loading_gif).apply {
+                        val ivLoading = findView<ImageView>(R.id.iv_loading)
+
+                        //用Glide实现圆角
+                        val options = RequestOptions().transform(RoundedCorners(SizeTransferUtil.dp2px(2, this@MainActivity)))
+                        //用Glide加载Gif
+                        Glide.with(this@MainActivity).load(R.drawable.loading_juhua).apply(options).into(ivLoading)
+                    }
+                    val tempStyleDialog = StyleDecorator(commonDialog).apply {
+                        setVerticalGravityAndBias(StyleDecorator.VerticalPosition.CENTER, 0)
+                        setAlphaAndDimAmount(0.9F, 0F)
+//                        setRatioOrSpare(0.1F)
+                        setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
+
+//                        setBackgroundCornerRadius(50)
+                        setAnimation(R.style.loadingjuhuaAnim)
+                    }
+
+                    val timerDecorator = TimerDecorator(tempStyleDialog).apply {
+                        setDismissDelay(5000)
+                    }
+
+                    timerDecorator.display()
                 },
             )
         )

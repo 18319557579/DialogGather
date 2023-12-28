@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!--todo 我发现宽度始终会自动拉长，对于想要wrap_content的情况非常不友好，因为
+    我的setRatioOrSpare()总是要去设置尺寸，目前没有wrap_content的情况-->
+
+    <ImageView
+        android:id="@+id/iv_loading"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:background="@drawable/loading_juhua_bg"/>
+
+</LinearLayout>
