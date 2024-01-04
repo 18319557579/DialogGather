@@ -646,11 +646,9 @@ class MainActivity : CallbackActivity() {
                         .setTitle("提示")
                         .setMessage("当前网站安全证书已过期或不可信\n是否继续浏览?")
                         .setPositiveButton("继续浏览") { dialog, which ->
-                            dialog.dismiss()
 //                            handler.proceed()
                         }
                         .setNegativeButton("返回上一页") { dialog, which ->
-                            dialog.dismiss()
 //                            handler.cancel()
                         }
                         .create()
