@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--todo 我发现作为dialog的最外层宽高会坍缩, 所以这里用了里面的内容进行支撑, 否则会什么也看不到. 之后可以尝试一下找原因-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".FloatLayerTestActivity"
+    android:background="#00ff00">
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+</FrameLayout>

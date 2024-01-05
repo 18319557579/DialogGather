@@ -3,7 +3,6 @@ package com.example.dialoggather
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.RoundedCorner
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -190,7 +189,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            R.layout.layout_test_dialog_width
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -203,7 +202,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            R.layout.layout_test_dialog_width
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -212,6 +211,33 @@ class MainActivity : CallbackActivity() {
                     styleDecorator.setWidthType(StyleDecorator.WidthType.VALUE.SPARE_LENGTH, 10F)
                     styleDecorator.display()
                 },
+                GuideItemEntity("设置水平包裹内容") {
+                    val commonDialog =
+                            CommonDialog(
+                                    this,
+                                    R.layout.layout_test_dialog_width
+                            )
+                    val styleDecorator =
+                            StyleDecorator(
+                                    commonDialog
+                            )
+                    styleDecorator.setWidthType(StyleDecorator.WidthType.SYSTEM.WRAP_CONTENT)
+                    styleDecorator.display()
+                },
+                GuideItemEntity("设置水平占满") {
+                    val commonDialog =
+                            CommonDialog(
+                                    this,
+                                    R.layout.layout_test_dialog_width
+                            )
+                    val styleDecorator =
+                            StyleDecorator(
+                                    commonDialog
+                            )
+                    styleDecorator.setWidthType(StyleDecorator.WidthType.SYSTEM.MATCH_PARENT)
+                    styleDecorator.display()
+                },
+
                 GuideItemEntity("点击外部无反应，点击返回键关闭") {
                     val commonDialog =
                         CommonDialog(
