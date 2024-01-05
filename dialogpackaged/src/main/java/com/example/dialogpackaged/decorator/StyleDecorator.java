@@ -50,9 +50,36 @@ public class StyleDecorator extends Decorator {
     private float mVerticalBiasRatio = 0;  //垂直偏移比例
     private int mVerticalBiasLength = 0;  //垂直偏移量（单位为dp，后面会转换为px）
 
-    private boolean mWidthTypeRatio = true;  //宽度的类型，水平占比/水平方向留白，默认水平占比
-    private float mWidthRatio = 4 / 5F;  //水平占比
-    private int mWidthSpare = 30;  //水平留白（实际为x2）
+    private WidthType mWidthType = WidthType.VALUE.CONTENT_RATIO;  //宽度类型
+
+    public interface WidthType {
+        enum SYSTEM implements WidthType{
+            WRAP_CONTENT,  //包裹内容. 后续无需传值
+            MATCH_PARENT;  //占满. 后续无需传值
+        }
+
+        enum VALUE implements WidthType{
+            CONTENT_RATIO,  //内容比例, 有效值在0 ~ 1
+            SPARE_LENGTH;  //左右留白的长度, 单位为dp
+
+            public float mWidthValue = 4 / 5F;  //由于WidthType的默认类型是WidthType.VALUE.CONTENT_RATIO, 所以设置一个内容比例的默认值
+        }
+    }
+
+    /**
+     * 如果是包裹内容或者占满的话, 不需要传数值了
+     */
+    public void setWidthType(WidthType.SYSTEM widthType) {
+        mWidthType = widthType;
+    }
+
+    /**
+     * 如果是内容比例或者左右留白类型, 则需要传值
+     */
+    public void setWidthType(WidthType.VALUE widthType, float value) {
+        widthType.mWidthValue = value;
+        mWidthType = widthType;
+    }
 
     public StyleDecorator(DisplayedDialog displayedDialog) {
         super(displayedDialog);
@@ -81,22 +108,6 @@ public class StyleDecorator extends Decorator {
         mVerticalBiasTypeRatio = false;
         mDialogWindow.setGravity(gravity.value);
         mVerticalBiasLength = biasLength;
-    }
-
-    /**
-     * 设置弹窗宽度的水平占比
-     */
-    public void setRatioOrSpare(float ratio) {
-        mWidthTypeRatio = true;
-        mWidthRatio = ratio;
-    }
-
-    /**
-     * 设置水平方向的左右留白
-     */
-    public void setRatioOrSpare(int spare) {
-        mWidthTypeRatio = false;
-        mWidthSpare = spare;
     }
 
     /**
@@ -294,10 +305,44 @@ public class StyleDecorator extends Decorator {
             params.y = SizeTransferUtil.dip2px(mVerticalBiasLength, mDialogContext);
         }
 
-        if (mWidthTypeRatio) {
+        //todo 先将设置宽度进行屏蔽，因为它不能执行wrap_content这样的效果
+        /*if (mWidthTypeRatio) {
             params.width = (int) (ScreenSizeUtil.getScreenWidth(mDialogContext) * mWidthRatio);
         } else {
             params.width = ScreenSizeUtil.getScreenWidth(mDialogContext) - SizeTransferUtil.dip2px(mWidthSpare, mDialogContext) * 2;
+        }*/
+
+//        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        params.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+        /*switch (mWidthType) {
+            case WidthType.SYSTEM.WRAP_CONTENT:
+                params.width = WindowManager.LayoutParams.WRAP_CONTENT;  //适应布局宽度
+                break;
+            case WidthType.SYSTEM.MATCH_PARENT:
+                params.width = WindowManager.LayoutParams.MATCH_PARENT;  //占满宽度
+                break;
+            case WidthType.VALUE.CONTENT_RATIO:
+                params.width = (int) (ScreenSizeUtil.getScreenWidth(mDialogContext) * mWidthRatio);
+                break;
+            case WidthType.VALUE.SPARE_LENGTH:
+                params.width = ScreenSizeUtil.getScreenWidth(mDialogContext) - SizeTransferUtil.dip2px(mWidthSpare, mDialogContext) * 2;
+                break;
+        }*/
+
+        if (mWidthType.equals(WidthType.SYSTEM.WRAP_CONTENT)) {
+            params.width = WindowManager.LayoutParams.WRAP_CONTENT;  //适应布局宽度
+
+        } else if (mWidthType.equals(WidthType.SYSTEM.MATCH_PARENT)) {
+            params.width = WindowManager.LayoutParams.MATCH_PARENT;  //占满宽度
+
+        } else if (mWidthType.equals(WidthType.VALUE.CONTENT_RATIO)) {  //用比例来算出具体宽度值
+            WidthType.VALUE widthTypeValue = (WidthType.VALUE) mWidthType;
+            params.width = (int) (ScreenSizeUtil.getScreenWidth(mDialogContext) * widthTypeValue.mWidthValue);
+
+        } else if (mWidthType.equals(WidthType.VALUE.SPARE_LENGTH)) {  //用左右留白长度来算出具体宽度值
+            WidthType.VALUE widthTypeValue = (WidthType.VALUE) mWidthType;
+            params.width = ScreenSizeUtil.getScreenWidth(mDialogContext) - SizeTransferUtil.dip2px(widthTypeValue.mWidthValue, mDialogContext) * 2;
         }
 
         mDialogWindow.setAttributes(params);

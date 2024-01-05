@@ -196,7 +196,7 @@ class MainActivity : CallbackActivity() {
                         StyleDecorator(
                             commonDialog
                         )
-                    styleDecorator.setRatioOrSpare(2 / 3F)
+                    styleDecorator.setWidthType(StyleDecorator.WidthType.VALUE.CONTENT_RATIO, 2 / 3F)
                     styleDecorator.display()
                 },
                 GuideItemEntity("设置水平留白") {
@@ -209,7 +209,7 @@ class MainActivity : CallbackActivity() {
                         StyleDecorator(
                             commonDialog
                         )
-                    styleDecorator.setRatioOrSpare(10)
+                    styleDecorator.setWidthType(StyleDecorator.WidthType.VALUE.SPARE_LENGTH, 10F)
                     styleDecorator.display()
                 },
                 GuideItemEntity("点击外部无反应，点击返回键关闭") {
@@ -454,7 +454,7 @@ class MainActivity : CallbackActivity() {
                     StyleDecorator(
                         slotsFeedbackDialog
                     ).apply {
-                        setRatioOrSpare(0.5F)
+                        setWidthType(StyleDecorator.WidthType.VALUE.CONTENT_RATIO, 0.5f)
                         setVerticalGravityAndBias(StyleDecorator.VerticalPosition.CENTER, 0)
                         setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
                         display()
@@ -489,7 +489,7 @@ class MainActivity : CallbackActivity() {
                         gamestickRadioDialog
                     ).apply {
                         setVerticalGravityAndBias(StyleDecorator.VerticalPosition.BOTTOM, 50)
-                        setRatioOrSpare(16)
+                        setWidthType(StyleDecorator.WidthType.VALUE.SPARE_LENGTH, 16f)
                         setCancelable(StyleDecorator.DismissResponse.RESPONSE_2)
                         display()
                     }
@@ -525,7 +525,7 @@ class MainActivity : CallbackActivity() {
                         gamestickRadioDialog
                     ).apply {
                         setVerticalGravityAndBias(StyleDecorator.VerticalPosition.TOP, 0.1F)
-                        setRatioOrSpare(50)
+                        setWidthType(StyleDecorator.WidthType.VALUE.SPARE_LENGTH, 50f)
                         setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
                         display()
                     }
@@ -666,9 +666,10 @@ class MainActivity : CallbackActivity() {
                     }
                     val tempStyleDialog = StyleDecorator(commonDialog).apply {
                         setVerticalGravityAndBias(StyleDecorator.VerticalPosition.CENTER, 0)
-                        setAlphaAndDimAmount(0.9F, 0F)
+                        setAlphaAndDimAmount(1F, 0F)
 //                        setRatioOrSpare(0.1F)
                         setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
+                        setWidthType(StyleDecorator.WidthType.SYSTEM.WRAP_CONTENT)
 
 //                        setBackgroundCornerRadius(50)
                         setAnimation(R.style.loadingjuhuaAnim)
