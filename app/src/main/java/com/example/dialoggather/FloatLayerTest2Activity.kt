@@ -42,7 +42,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
                     verticalLocation = Config.VERTICAL_BOTTOM
                     verticalMargin = RandomUtil.getRandomInt(0, 300);
                 }
-                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar))
+
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar))
             },
             GuideItemEntity("相同宿主，随机标识。随机底部边距，避免重叠。3000毫秒后自动消失") {
                 val config = Config().apply {
@@ -55,7 +56,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar))
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar))
             },
 
             GuideItemEntity("相同宿主，相同标识。随机底部边距，避免重叠。") {
@@ -67,7 +68,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                     verticalLocation = Config.VERTICAL_BOTTOM
                     verticalMargin = RandomUtil.getRandomInt(0, 300)
                 }
-                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar),
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar),
                     "SAME_LABEL", 0)
             },
             GuideItemEntity("相同宿主，相同标识。随机底部边距，避免重叠。3000毫秒后自动消失") {
@@ -81,7 +82,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar),
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar),
                     "SAME_LABEL", 0)
             },
 
@@ -97,8 +98,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar)
-                floatLayer.findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar)
+                floatLayer.findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                     setText("我的标识是one")
                     setTextColor(Color.parseColor("#FF0000"))
                 }
@@ -115,8 +116,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar)
-                floatLayer.findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar)
+                floatLayer.findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                     setText("我的标识是two")
                     setTextColor(Color.parseColor("#00FF00"))
                 }
@@ -134,8 +135,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("优先级 0")
                     }
                 }
@@ -152,8 +153,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("优先级 1")
                     }
                 }
@@ -170,8 +171,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("优先级 3")
                     }
                 }
@@ -189,8 +190,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContentSecond, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContentSecond, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("上方宿主的")
                     }
                 }
@@ -208,8 +209,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("下方宿主的")
                     }
                 }
@@ -227,8 +228,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContentSecond, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContentSecond, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("上方宿主的")
                     }
                 }
@@ -245,8 +246,8 @@ class FloatLayerTest2Activity : CallbackActivity() {
 
                     delayMillis = 3000
                 }
-                val floatLayer = FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar).apply {
-                    findView<TextView>(R.id.flla_jump_title_tv).apply {
+                val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar).apply {
+                    findView<TextView>(com.example.floatlayer.R.id.flla_jump_title_tv).apply {
                         setText("下方宿主的")
                     }
                 }
@@ -266,7 +267,7 @@ class FloatLayerTest2Activity : CallbackActivity() {
                     dismissAnimRes = com.example.floatlayer.R.anim.flla_layer_dismiss_anim_2
                     delayMillis = 3000
                 }
-                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, R.layout.medi_tiny_message_bar),
+                FloatLayoutManager.getInstance().show(config, FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.medi_tiny_message_bar),
                     "SHOW_IN", 0)
             },
         ))

@@ -56,9 +56,9 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
-                    commonDialog.findView<TextView>(R.id.tv_title).setText("这就是标题")
+                    commonDialog.findView<TextView>(com.example.dialogpackaged.R.id.tv_title).setText("这就是标题")
                     val styleDecorator =
                         StyleDecorator(
                             commonDialog
@@ -69,7 +69,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     commonDialog.display()
                 },
@@ -77,7 +77,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -93,7 +93,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -109,7 +109,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -125,7 +125,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -141,7 +141,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -157,7 +157,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -173,7 +173,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -242,7 +242,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -255,7 +255,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -268,9 +268,9 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
-                    commonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
+                    commonDialog.findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener {
                         commonDialog.dismiss()
                     }
                     val styleDecorator =
@@ -284,7 +284,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -297,7 +297,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -310,7 +310,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -323,7 +323,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -337,7 +337,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -353,7 +353,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -368,7 +368,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     val styleDecorator =
                         StyleDecorator(
@@ -561,7 +561,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     StyleDecorator(
                         commonDialog
@@ -574,7 +574,7 @@ class MainActivity : CallbackActivity() {
                     val commonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                     StyleDecorator(
                         commonDialog
@@ -589,7 +589,7 @@ class MainActivity : CallbackActivity() {
                     tempCommonDialog =
                         CommonDialog(
                             this,
-                            R.layout.dialogpackaged_layout_gamestick_confirmation
+                            com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation
                         )
                 },
                 //(第二次不回调onCreate)
@@ -597,7 +597,7 @@ class MainActivity : CallbackActivity() {
                     tempCommonDialog.display()
                 },
                 GuideItemEntity("展示之前创建的弹窗，取消按钮用dismiss进行关闭") {
-                    tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
+                    tempCommonDialog.findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener {
                         tempCommonDialog.dismiss()
                     }
                     StyleDecorator(
@@ -607,7 +607,7 @@ class MainActivity : CallbackActivity() {
                     }
                 },
                 GuideItemEntity("展示之前创建的弹窗，取消按钮用cancel进行关闭") {
-                    tempCommonDialog.findView<Button>(R.id.btn_cancel).setOnClickListener {
+                    tempCommonDialog.findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener {
                         tempCommonDialog.cancel()
                     }
                     StyleDecorator(
@@ -618,14 +618,14 @@ class MainActivity : CallbackActivity() {
                 },
 
                 GuideItemEntity("4 只用样式装饰器，DialogDecorator(CommonDialog)") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation);
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation);
                     StyleDecorator(
                         commonDialog
                     ).display()
                 },
                 GuideItemEntity("只用定时装饰器，TimerDecorator(CommonDialog)") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
-                            findView<Button>(R.id.btn_cancel).setOnClickListener { dismiss() }
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
+                            findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener { dismiss() }
                         }
                     TimerDecorator(commonDialog).apply {
                         setDismissDelay(6000)
@@ -633,16 +633,16 @@ class MainActivity : CallbackActivity() {
                 },
                 //其实下面这两效果一样
                 GuideItemEntity("定时装饰器+样式装饰器，DialogDecorator(TimerDecorator(CommonDialog))") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
-                        findView<Button>(R.id.btn_cancel).setOnClickListener { dismiss() }
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
+                        findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener { dismiss() }
                     }
                     StyleDecorator(
                         TimerDecorator(commonDialog)
                     ).display()
                 },
                 GuideItemEntity("样式装饰器+定时装饰器，TimerDecorator(DialogDecorator(CommonDialog))") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
-                        findView<Button>(R.id.btn_cancel).setOnClickListener { dismiss() }
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation).apply {
+                        findView<Button>(com.example.dialogpackaged.R.id.btn_cancel).setOnClickListener { dismiss() }
                     }
                     TimerDecorator(
                         StyleDecorator(
@@ -653,7 +653,7 @@ class MainActivity : CallbackActivity() {
 
                 //这里是为了测试TimerDecorator装饰的弹窗可以进行实例复用
                 GuideItemEntity("5 创建TimerDecorator装饰的弹窗，并保存到内存") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation)
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation)
                     tempTimerDialog = TimerDecorator(commonDialog)
                 },
                 GuideItemEntity("复用TimerDecorator实例") {
@@ -662,7 +662,7 @@ class MainActivity : CallbackActivity() {
 
                 //这里是为了测试StyleDecorator装饰的弹窗可以进行实例复用
                 GuideItemEntity("6 创建StyleDecorator装饰的弹窗，并保存到内存") {
-                    val commonDialog = CommonDialog(this, R.layout.dialogpackaged_layout_gamestick_confirmation)
+                    val commonDialog = CommonDialog(this, com.example.dialogpackaged.R.layout.dialogpackaged_layout_gamestick_confirmation)
                     tempStyleDialog = StyleDecorator(commonDialog)
                 },
 
