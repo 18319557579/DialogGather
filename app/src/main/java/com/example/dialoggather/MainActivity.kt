@@ -19,14 +19,14 @@ import com.example.dialogpackaged.dialog.GamestickNormalDialog
 import com.example.dialogpackaged.dialog.GamestickNormalDialog.EventCallback
 import com.example.dialogpackaged.dialog.SlotsFeedbackDialog
 import com.example.dialogpackaged.dialog.radio.GamestickRadioDialog
-import com.example.utilsgather.lifecycle_callback.CallbackActivity
+import com.example.utilsgather.lifecycle_callback.LifecycleLogActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.logcat.LogUtil
 import com.example.utilsgather.ui.SizeTransferUtil
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
-class MainActivity : CallbackActivity() {
+class MainActivity : LifecycleLogActivity() {
 
     lateinit var tempCommonDialog: CommonDialog  //临时存储，用于测试CommonDialog实例的复用
 

@@ -7,13 +7,13 @@ import com.example.floatlayer.Config
 import com.example.floatlayer.FloatLayoutManager
 import com.example.floatlayer.layer.FloatLayer
 import com.example.floatlayer.layer.JumpFloatLayer
-import com.example.utilsgather.lifecycle_callback.CallbackActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 import com.example.dialoggather.databinding.ActivityFloatLayerTestBinding
+import com.example.utilsgather.lifecycle_callback.LifecycleLogActivity
 
-class FloatLayerTestActivity : CallbackActivity() {
+class FloatLayerTestActivity : LifecycleLogActivity() {
 
     private val mBinding: ActivityFloatLayerTestBinding by lazy {
         ActivityFloatLayerTestBinding.inflate(layoutInflater)

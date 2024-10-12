@@ -8,14 +8,14 @@ import android.widget.Toast
 import com.example.floatlayer.Config
 import com.example.floatlayer.FloatLayoutManager
 import com.example.floatlayer.layer.FloatLayer
-import com.example.utilsgather.lifecycle_callback.CallbackActivity
+import com.example.utilsgather.lifecycle_callback.LifecycleLogActivity
 import com.example.utilsgather.list_guide.GuideItemEntity
 import com.example.utilsgather.list_guide.GuideSettings
 import com.example.utilsgather.random.RandomUtil
 import com.example.utilsgather.ui.screen.ScreenFunctionUtils
 
 
-class FloatLayerTest2Activity : CallbackActivity() {
+class FloatLayerTest2Activity : LifecycleLogActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
