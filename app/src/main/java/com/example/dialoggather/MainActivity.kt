@@ -707,6 +707,22 @@ class MainActivity : LifecycleLogActivity() {
 
                     timerDecorator.display()
                 },
+
+                GuideItemEntity("网页广告退出的确认弹窗") {
+                    val commonDialog = CommonDialog(this, R.layout.layout_exit_confirm).apply {
+                        findView<ImageView>(R.id.iv_close_no).setOnClickListener {
+                            this.dismiss()
+                        }
+                        findView<TextView>(R.id.tv_close_yes).setOnClickListener {
+                            this.dismiss()
+                        }
+                    }
+                    StyleDecorator(commonDialog).apply {
+                        setWidthType(StyleDecorator.WidthType.VALUE.CONTENT_RATIO, 5 / 6F)
+                        setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
+                    }.display()
+
+                },
             )
         )
 
