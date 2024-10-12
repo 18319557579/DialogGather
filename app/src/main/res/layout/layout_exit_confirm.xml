@@ -35,9 +35,10 @@
         android:paddingVertical="30dp">
 
         <TextView
+            android:id="@+id/tv_hint_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="16dp"
             android:gravity="center"
             android:text="Tem certeza de que deseja sair do jogo? voce perdera ate 14.18 em recompensas"
             android:textColor="@android:color/black"

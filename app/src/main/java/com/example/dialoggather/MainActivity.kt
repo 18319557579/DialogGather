@@ -3,6 +3,9 @@ package com.example.dialoggather
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -716,9 +719,17 @@ class MainActivity : LifecycleLogActivity() {
                         findView<TextView>(R.id.tv_close_yes).setOnClickListener {
                             this.dismiss()
                         }
+                        val fullText = "Tem certeza de que deseja sair do jogo? voce perdera ate 14.18 em recompensas"
+                        val subString = "14.18"
+                        val start = fullText.indexOf(subString)
+                        val end = start + subString.length
+                        val spannableString = SpannableString(fullText).apply {
+                            setSpan(ForegroundColorSpan(Color.parseColor("#1dcd1e")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        }
+                        findView<TextView>(R.id.tv_hint_body).text = spannableString
                     }
                     StyleDecorator(commonDialog).apply {
-                        setWidthType(StyleDecorator.WidthType.VALUE.CONTENT_RATIO, 5 / 6F)
+                        setWidthType(StyleDecorator.WidthType.VALUE.CONTENT_RATIO, 7 / 8F)
                         setCancelable(StyleDecorator.DismissResponse.RESPONSE_4)
                     }.display()
 
