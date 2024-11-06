@@ -387,6 +387,20 @@ class FloatLayerTestActivity : LifecycleLogActivity() {
                     val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.flla_layout_ad)
                     FloatLayoutManager.getInstance().show(config, floatLayer)
                 },
+                GuideItemEntity("喜马拉雅，水平占满") {
+                    val config = Config().apply {
+                        lengthType = false
+                        size = 1f
+
+                        horizontalLocation = Config.HORIZONTAL_CENTER
+                        verticalLocation = Config.VERTICAL_BOTTOM
+                        verticalMargin = 100
+
+                        radius = Float.MAX_VALUE
+                    }
+                    val floatLayer = FloatLayer(frameLayoutContent, com.example.floatlayer.R.layout.flla_layout_ad)
+                    FloatLayoutManager.getInstance().show(config, floatLayer)
+                },
                 GuideItemEntity("喜马拉雅，点击确定浮层消失并Toast") {
                     val config = Config().apply {
                         lengthType = false
