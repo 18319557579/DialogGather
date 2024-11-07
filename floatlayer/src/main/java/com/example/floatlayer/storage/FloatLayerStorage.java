@@ -6,6 +6,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+/**
+ * 有这样一个需求，就是相同标识的FloatLayer只能同时存在一个，要等前面一个消失了，才能展示下一个
+ * 所以队列就是做这样一件事的，在同一个宿主中，同一标识只能同时展示一个FloatLayer
+ */
 public class FloatLayerStorage {
 
 
